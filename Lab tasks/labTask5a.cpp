@@ -75,7 +75,14 @@ void norway() {
     glVertex2f(270, 0);
     glEnd();
 
-
+    //region J
+    glBegin(GL_QUADS);
+    glColor3f(0 / 255.0f, 32 / 255.0f, 91 / 255.0f);
+    glVertex2f(0, 270);
+    glVertex2f(660, 270);
+    glVertex2f(660, 210);
+    glVertex2f(0, 210);
+    glEnd();
 }
 
 
