@@ -20,15 +20,13 @@ void display() {
 
 
 void norway() {
-    // region A
+    // region B
     glBegin(GL_QUADS);
     glColor3f(186 / 255.0f, 12 / 255.0f, 47 / 255.0f);
     glVertex2f(0, 480);
     glVertex2f(180, 480);
     glVertex2f(180, 300);
     glVertex2f(0, 300);
-    glVertex2f(210, 270);
-    glVertex2f(210, 480);
     glEnd();
 
     // glBegin(GL_POLYGON);
@@ -40,6 +38,44 @@ void norway() {
     // glVertex2f(0, 300);
     // glVertex2f(180, 300);
     // glEnd();
+
+    // region D
+    glBegin(GL_QUADS);
+    glColor3f(186 / 255.0f, 12 / 255.0f, 47 / 255.0f);
+    glVertex2f(300, 480);
+    glVertex2f(660, 480);
+    glVertex2f(660, 300);
+    glVertex2f(300, 300);
+    glEnd();
+
+    // region H
+    glBegin(GL_QUADS);
+    glColor3f(186 / 255.0f, 12 / 255.0f, 47 / 255.0f);
+    glVertex2f(300, 180);
+    glVertex2f(660, 180);
+    glVertex2f(660, 0);
+    glVertex2f(300, 0);
+    glEnd();
+
+    // region F
+    glBegin(GL_QUADS);
+    glColor3f(186 / 255.0f, 12 / 255.0f, 47 / 255.0f);
+    glVertex2f(0, 180);
+    glVertex2f(180, 180);
+    glVertex2f(180, 0);
+    glVertex2f(0, 0);
+    glEnd();
+
+    // region I
+    // glBegin(GL_QUADS);
+    // glColor3f(186 / 255.0f, 12 / 255.0f, 47 / 255.0f);
+    // glVertex2f(0, 180);
+    // glVertex2f(180, 180);
+    // glVertex2f(180, 0);
+    // glVertex2f(0, 0);
+    // glEnd();
+
+
 }
 
 
