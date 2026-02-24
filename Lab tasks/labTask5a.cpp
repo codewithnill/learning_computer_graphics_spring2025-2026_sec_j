@@ -93,9 +93,6 @@ int main(int argc, char** argv) {
     //argc = argument count (number of command-line arguments)
     //argv = argument vector (array of command-line argument strings)
     glutInit(&argc, argv);
-    // from 440x320 
-    // 1.5x
-    // 30 pixels
     glutInitWindowSize(660, 480); // Set the window's initial width & height
     glutInitWindowPosition(380, 150);  // Set the window's initial position according to the monitor
     glutCreateWindow("Task 5a : Norway flag"); // Create a window with the given title
