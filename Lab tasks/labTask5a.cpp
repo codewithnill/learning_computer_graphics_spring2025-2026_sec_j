@@ -66,14 +66,14 @@ void norway() {
     glVertex2f(0, 0);
     glEnd();
 
-    // region I
-    // glBegin(GL_QUADS);
-    // glColor3f(186 / 255.0f, 12 / 255.0f, 47 / 255.0f);
-    // glVertex2f(0, 180);
-    // glVertex2f(180, 180);
-    // glVertex2f(180, 0);
-    // glVertex2f(0, 0);
-    // glEnd();
+    //region I
+    glBegin(GL_QUADS);
+    glColor3f(0 / 255.0f, 32 / 255.0f, 91 / 255.0f);
+    glVertex2f(210, 0);
+    glVertex2f(210, 480);
+    glVertex2f(270, 480);
+    glVertex2f(270, 0);
+    glEnd();
 
 
 }
