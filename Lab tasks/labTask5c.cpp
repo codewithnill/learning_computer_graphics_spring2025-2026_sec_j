@@ -10,8 +10,8 @@ void display() {
 
     gluOrtho2D(0, 450, 0, 300);
     // Sets up a 2D orthographic projection
-    // X-axis ranges from 0 to 660
-    // Y-axis ranges from 0 to 480
+    // X-axis ranges from 0 to 450
+    // Y-axis ranges from 0 to 300
 
     southafrica();
 
