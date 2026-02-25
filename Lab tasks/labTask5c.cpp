@@ -20,16 +20,50 @@ void display() {
 
 
 void southafrica() {
+    //region B
+    glBegin(GL_QUADS);
+    glColor3f(255 / 255.0f, 255 / 255.0f, 255 / 255.0f);
+    glVertex2f(54, 0);
+    glVertex2f(234, 120);
+    glVertex2f(450, 120);
+    glVertex2f(450, 0);
+    glEnd();
 
+    //region F
+    glBegin(GL_QUADS);
+    glColor3f(0 / 255.0f, 20 / 255.0f, 137 / 255.0f);
+    glVertex2f(90, 0);
+    glVertex2f(240, 100);
+    glVertex2f(450, 100);
+    glVertex2f(450, 0);
+    glEnd();
 
-    // region A
-    // glBegin(GL_QUADS);
-    // glColor3f(1 / 255.0f, 1 / 255.0f, 1 / 255.0f);
-    // glVertex2f(450 * xpx, 120 * ypx);
-    // glVertex2f(234 * xpx, 120 * ypx);
-    // glVertex2f(54 * xpx, 0 * ypx);
-    // glVertex2f(450 * xpx, 0 * ypx);
-    // glEnd();
+    //region A
+    glBegin(GL_QUADS);
+    glColor3f(255 / 255.0f, 255 / 255.0f, 255 / 255.0f);
+    glVertex2f(54, 300);
+    glVertex2f(234, 180);
+    glVertex2f(450, 180);
+    glVertex2f(450, 300);
+    glEnd();
+
+    //region E
+    glBegin(GL_QUADS);
+    glColor3f(224 / 255.0f, 60 / 255.0f, 49 / 255.0f);
+    glVertex2f(90, 300);
+    glVertex2f(240, 200);
+    glVertex2f(450, 200);
+    glVertex2f(450, 300);
+    glEnd();
+
+    //region C
+    glBegin(GL_TRIANGLES);
+    glColor3f(255 / 255.0f, 184 / 255.0f, 28 / 255.0f);
+    glVertex2f(0, 36);
+    glVertex2f(171, 150);
+    glVertex2f(0, 264);
+    //glVertex2f(450, 300);
+    glEnd();
 }
 
 
