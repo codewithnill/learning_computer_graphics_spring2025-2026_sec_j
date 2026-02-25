@@ -64,6 +64,15 @@ void southafrica() {
     glVertex2f(0, 264);
     //glVertex2f(450, 300);
     glEnd();
+
+    //region D
+    glBegin(GL_TRIANGLES);
+    glColor3f(0 / 255.0f, 0 / 255.0f, 0 / 255.0f);
+    glVertex2f(0, 60);
+    glVertex2f(135, 150);
+    glVertex2f(0, 240);
+    //glVertex2f(450, 300);
+    glEnd();
 }
 
 
