@@ -193,7 +193,7 @@ void boat() {
 
 
     // window quad Z A1 W V
-    glColor3f(0.176, 1, 0.933); // light blue color
+    glColor3f(0.208, 0.416, 0.702); // light blue color
     glBegin(GL_QUADS);
     glVertex2f(-142, -174); // Z: Top-left corner
     glVertex2f(-88, -182);  // A1: Top-right corner
@@ -214,6 +214,150 @@ void boat() {
 
 
 void fishes() {
+    // leader fish
+    // body quad H I K J
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_QUADS);
+    glVertex2f(44, -201);   // H: Left
+    glVertex2f(50, -197);   // I: Top
+    glVertex2f(56, -200);   // K: Right
+    glVertex2f(50, -204);   // J: Bottom
+    glEnd();
+
+    // tail triangle K L M
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_TRIANGLES);
+    glVertex2f(56, -200);   // K: Left
+    glVertex2f(60, -197);   // L: Top
+    glVertex2f(60, -205);   // M: Bottom
+    glEnd();
+
+
+
+
+    // Top fish 1
+    // body quad H1 I1 K1 J1
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_QUADS);
+    glVertex2f(54, -190);   // H1: Left
+    glVertex2f(60, -186);   // I1: Top
+    glVertex2f(66, -190);   // K1: Right
+    glVertex2f(60, -194);   // J1: Bottom
+    glEnd();
+
+    // tail triangle K1 L1 M1
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_TRIANGLES);
+    glVertex2f(66, -190);   // K1: Left
+    glVertex2f(70, -186);   // L1: Top
+    glVertex2f(70, -194);   // M1: Bottom
+    glEnd();
+
+
+
+    // Top fish 2
+    // body quad H3 I3 K3 J3
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_QUADS);
+    glVertex2f(72, -190);   // H3: Left
+    glVertex2f(78, -186);   // I3: Top
+    glVertex2f(84, -189);   // K3: Right
+    glVertex2f(78, -194);   // J3: Bottom
+    glEnd();
+
+    // tail triangle K3 L3 M3
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_TRIANGLES);
+    glVertex2f(84, -189);   // K3: Left
+    glVertex2f(88, -186);   // L3: Top
+    glVertex2f(89, -194);   // M3: Bottom
+    glEnd();
+
+
+
+
+
+    // Middle fish 1
+    // body quad H5 I5 K5 J5
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_QUADS);
+    glVertex2f(62, -201);   // H5: Left
+    glVertex2f(68, -197);   // I5: Top
+    glVertex2f(74, -201);   // K5: Right
+    glVertex2f(68, -204);   // J5: Bottom
+    glEnd();
+
+    // tail triangle K5 L5 M5
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_TRIANGLES);
+    glVertex2f(74, -201);   // K5: Left
+    glVertex2f(78, -197);   // L5: Top
+    glVertex2f(78, -205);   // M5: Bottom
+    glEnd();
+
+
+
+
+    // Middle fish 3
+    // body quad H4 I4 K4 J4
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_QUADS);
+    glVertex2f(80, -201);   // H4: Left
+    glVertex2f(86, -197);   // I4: Top
+    glVertex2f(92, -201);   // K4: Right
+    glVertex2f(86, -205);   // J4: Bottom
+    glEnd();
+
+    // tail triangle K5 L5 M5
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_TRIANGLES);
+    glVertex2f(92, -201);   // K4: Left
+    glVertex2f(96, -197);   // L4: Top
+    glVertex2f(96, -205);   // M4: Bottom
+    glEnd();
+
+
+
+
+    // Bottom fish 1
+    // body quad H2 I2 K2 J2
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_QUADS);
+    glVertex2f(54, -211);   // H2: Left
+    glVertex2f(60, -207);   // I2: Top
+    glVertex2f(66, -211);   // K2: Right
+    glVertex2f(60, -215);   // J2: Bottom
+    glEnd();
+
+    // tail triangle K1 L1 M1
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_TRIANGLES);
+    glVertex2f(66, -211);   // K2: Left
+    glVertex2f(70, -207);   // L2: Top
+    glVertex2f(70, -215);   // M2: Bottom
+    glEnd();
+
+
+
+
+    // Bottom fish 2
+    // body quad H6 I6 K6 J6
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_QUADS);
+    glVertex2f(72, -211);   // H6: Left
+    glVertex2f(78, -207);   // I6: Top
+    glVertex2f(84, -211);   // K6: Right
+    glVertex2f(78, -214);   // J6: Bottom
+    glEnd();
+
+    // tail triangle K6 L6 M6
+    glColor3f(0.208, 0.416, 0.702); // light blue color
+    glBegin(GL_TRIANGLES);
+    glVertex2f(84, -211);   // K6: Left
+    glVertex2f(88, -207);   // L6: Top
+    glVertex2f(89, -215);   // M6: Bottom
+    glEnd();
+
 
 }
 
