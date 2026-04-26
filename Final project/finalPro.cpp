@@ -7,12 +7,13 @@ float boatX = 0.0f;  // controls boat's horizontal position
 float fishX = 0.0f;  // fish group position controller
 int fishColorIndex = 0; // tracks current color (0, 1, or 2)
 
-
-void water(); // prototype
-void sky(); // prototype
-void fishes(); // prototype
-void streets(); // prototype
-void boat(); // prototype
+// prototype
+void water();
+void sky();
+void fishes();
+void streets();
+void boat();
+void grass();
 
 
 
@@ -76,6 +77,7 @@ void display() {
 
 
     sky();
+    grass();
     water();
     fishes();
     streets();
@@ -92,7 +94,27 @@ void display() {
 
 
 
+void sky() {
+    glColor3f(0.529, 0.808, 0.922);  // Light blue color
+    glBegin(GL_QUADS);     // rectangle (quadrilateral)
+    glVertex2f(250, 250);  // Top-right corner (highest possible)
+    glVertex2f(-250, 250); // Top-left corner (highest possible)
+    glVertex2f(-250, 150); // Bottom-left corner 
+    glVertex2f(250, 150);  // Bottom-right corner 
+    glEnd();
+}
 
+void grass() {
+    glColor3f(0, 0.412, 0.008);  // Green grass
+    glBegin(GL_QUADS);
+    glVertex2f(-250, -50);  // Z1: Top-left corner of separator
+    glVertex2f(250, -50);   // A2: Top-right corner of separator
+    glVertex2f(250, -75);   // W1: Bottom-right corner of separator
+    glVertex2f(-250, -75);  // V1: Bottom-left corner of separator
+    glEnd();
+
+
+}
 
 
 
@@ -135,15 +157,7 @@ void streets() {
     }
 }
 
-void sky() {
-    glColor3f(0.529, 0.808, 0.922);  // Light blue color
-    glBegin(GL_QUADS);     // rectangle (quadrilateral)
-    glVertex2f(250, 250);  // Top-right corner (highest possible)
-    glVertex2f(-250, 250); // Top-left corner (highest possible)
-    glVertex2f(-250, 150); // Bottom-left corner 
-    glVertex2f(250, 150);  // Bottom-right corner 
-    glEnd();
-}
+
 
 void water() {
     // adding a separator between street bottom and water top
