@@ -3,11 +3,43 @@
 #include <GL/glut.h> // GLUT, include glu.h and gl.h
 
 
+float boatX = 0.0f;  // controls boat's horizontal position
+
+
+
 void water(); // prototype
 void sky(); // prototype
 void fishes(); // prototype
 void streets(); // prototype
 void boat(); // prototype
+
+
+
+
+
+
+
+
+
+
+
+void update(int value) {
+    boatX -= 0.8;  // Move left 
+
+    // Reset position when boat goes too far left
+    if (boatX < -250) {
+        boatX = 250 + 200;  // Reset to right side
+    }
+
+    glutPostRedisplay();  // Redraw the scene
+    glutTimerFunc(8, update, 0);  // Call again 
+}
+
+
+
+
+
+
 
 void display() {
     glClearColor(1, 1, 1, 1); // Set background color to white and opaque
@@ -43,6 +75,14 @@ void display() {
 
     glFlush(); // Render now (forces all OpenGL commands to execute immediately)
 }
+
+
+
+
+
+
+
+
 
 
 void streets() {
@@ -101,48 +141,73 @@ void water() {
 
 
 void boat() {
+    glPushMatrix();
+    glTranslatef(boatX, 0.0f, 0.0f);  // moves boat left
 
     // lower parts
-    // quad NOPQ
-    glColor3f(0.98, 0.98, 0.98);  // Light gray color
+    // quad N O P Q
+    glColor3f(0.902, 0.902, 0.902);  // Light gray color
     glBegin(GL_QUADS);
     glVertex2f(-205, -192); // N: Top-left corner
     glVertex2f(-65, -192);  // O: Top-right corner
-    glVertex2f(-65, -228);  // P: Bottom-right corner
+    glVertex2f(-72, -228);  // P: Bottom-right corner
     glVertex2f(-165, -228); // Q: Bottom-left corner
     glEnd();
 
     // two quad paint in boat body
-    // 1st quad B1C1E1D1
+    // 1st quad B1 C1 E1 D1
     glColor3f(0.929, 0, 0);  // Red color
     glBegin(GL_QUADS);
     glVertex2f(-187, -208); // B1: Top-left corner
-    glVertex2f(-65, -208);  // C1: Top-right corner
-    glVertex2f(-65, -212);  // E1: Bottom-right corner
+    glVertex2f(-68, -208);  // C1: Top-right corner
+    glVertex2f(-69, -212);  // E1: Bottom-right corner
     glVertex2f(-182, -212); // D1: Bottom-left corner
     glEnd();
 
-    // 2nd quad D1E1G1F1
+    // 2nd quad D1 E1 G1 F1
     glColor3f(0, 0.071, 0.659);  // Blue color
     glBegin(GL_QUADS);
     glVertex2f(-182, -212); // D1: Top-left corner
-    glVertex2f(-65, -212);  // E1: Top-right corner
-    glVertex2f(-65, -216);  // G1: Bottom-right corner
+    glVertex2f(-69, -212);  // E1: Top-right corner
+    glVertex2f(-69, -216);  // G1: Bottom-right corner
     glVertex2f(-178, -216); // F1: Bottom-left corner
     glEnd();
 
 
 
 
+
+
+
+
+
     // upper part
-    // quad STUR
-    glColor3f(0.98, 0.98, 0.98);  // Light gray color
+    // quad S T U R
+    glColor3f(0.741, 0.741, 0.741);  // Light gray color
     glBegin(GL_QUADS);
     glVertex2f(-145, -168); // S: Top-left corner
     glVertex2f(-85, -180);  // T: Top-right corner
     glVertex2f(-85, -192);  // U: Bottom-right corner
     glVertex2f(-174, -192); // R: Bottom-left corner
     glEnd();
+
+
+    // window quad Z A1 W V
+    glColor3f(0.176, 1, 0.933); // light blue color
+    glBegin(GL_QUADS);
+    glVertex2f(-142, -174); // Z: Top-left corner
+    glVertex2f(-88, -182);  // A1: Top-right corner
+    glVertex2f(-88, -188);  // W: Bottom-right corner
+    glVertex2f(-165, -188); // V: Bottom-left corner
+    glEnd();
+
+
+
+
+
+
+    glPopMatrix();
+
 }
 
 
@@ -166,6 +231,9 @@ int main(int argc, char** argv) {
     glutInitWindowPosition(70, 70);  // Set the window's initial position according to the monitor
     glutCreateWindow("Scene"); // Create a window with the given title
     glutDisplayFunc(display); // Register display callback handler for window re-paint
+
+    glutTimerFunc(16, update, 0);
+
     glutMainLoop(); // Enter the event-processing loop (keeps the program alive)
     return 0;
 }
