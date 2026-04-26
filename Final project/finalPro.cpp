@@ -7,6 +7,7 @@ void water(); // prototype
 void sky(); // prototype
 void fishes(); // prototype
 void streets(); // prototype
+void boat(); // prototype
 
 void display() {
     glClearColor(1, 1, 1, 1); // Set background color to white and opaque
@@ -33,6 +34,7 @@ void display() {
     water();
     fishes();
     streets();
+    boat();
 
 
 
@@ -52,7 +54,7 @@ void streets() {
     glVertex2f(-250, -150); // Bottom-left corner
     glEnd();
 
-    // Draw DASHED yellow center line (in the middle of the street)
+    // dashed yellow center line (in the middle of the street)
     glLineWidth(4);  // Thick line
     glColor3f(1, 0.839, 0);  // Bright yellow color
 
@@ -95,6 +97,56 @@ void water() {
     glVertex2f(250, -250);   // Bottom-right corner (lowest possible)
     glEnd();
 }
+
+
+
+void boat() {
+
+    // lower parts
+    // quad NOPQ
+    glColor3f(0.98, 0.98, 0.98);  // Light gray color
+    glBegin(GL_QUADS);
+    glVertex2f(-205, -192); // N: Top-left corner
+    glVertex2f(-65, -192);  // O: Top-right corner
+    glVertex2f(-65, -228);  // P: Bottom-right corner
+    glVertex2f(-165, -228); // Q: Bottom-left corner
+    glEnd();
+
+    // two quad paint in boat body
+    // 1st quad B1C1E1D1
+    glColor3f(0.929, 0, 0);  // Red color
+    glBegin(GL_QUADS);
+    glVertex2f(-187, -208); // B1: Top-left corner
+    glVertex2f(-65, -208);  // C1: Top-right corner
+    glVertex2f(-65, -212);  // E1: Bottom-right corner
+    glVertex2f(-182, -212); // D1: Bottom-left corner
+    glEnd();
+
+    // 2nd quad D1E1G1F1
+    glColor3f(0, 0.071, 0.659);  // Blue color
+    glBegin(GL_QUADS);
+    glVertex2f(-182, -212); // D1: Top-left corner
+    glVertex2f(-65, -212);  // E1: Top-right corner
+    glVertex2f(-65, -216);  // G1: Bottom-right corner
+    glVertex2f(-178, -216); // F1: Bottom-left corner
+    glEnd();
+
+
+
+
+    // upper part
+    // quad STUR
+    glColor3f(0.98, 0.98, 0.98);  // Light gray color
+    glBegin(GL_QUADS);
+    glVertex2f(-145, -168); // S: Top-left corner
+    glVertex2f(-85, -180);  // T: Top-right corner
+    glVertex2f(-85, -192);  // U: Bottom-right corner
+    glVertex2f(-174, -192); // R: Bottom-left corner
+    glEnd();
+}
+
+
+
 
 void fishes() {
 
