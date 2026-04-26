@@ -4,7 +4,8 @@
 
 
 float boatX = 0.0f;  // controls boat's horizontal position
-
+float fishX = 0.0f;  // fish group position controller
+int fishColorIndex = 0; // tracks current color (0, 1, or 2)
 
 
 void water(); // prototype
@@ -30,6 +31,18 @@ void update(int value) {
     if (boatX < -250) {
         boatX = 250 + 200;  // Reset to right side
     }
+
+
+
+    fishX -= 0.5;  // Move fishes left (slower than boat)
+
+    // When fishes go off screen, reset and change color
+    if (fishX < -350) {
+        fishX = 230;  // Reset to right side
+        fishColorIndex = (fishColorIndex + 1) % 3;  // Cycle through 0,1,2
+    }
+
+
 
     glutPostRedisplay();  // Redraw the scene
     glutTimerFunc(8, update, 0);  // Call again 
@@ -86,6 +99,7 @@ void display() {
 
 
 void streets() {
+    glLoadIdentity(); // stops the street from translating to the left
     glColor3f(0.169, 0.169, 0.169);  // Gray color
     glBegin(GL_QUADS);
     glVertex2f(-250, -80); // Top-left corner
@@ -213,10 +227,39 @@ void boat() {
 
 
 
+
+
+// Function to set fish color based on index
+void setFishColor(int colorIndex) {
+    switch (colorIndex) {
+    case 0:  // Color 1: Orange
+        glColor3f(0.969, 0.376, 0);
+        break;
+    case 1:  // Color 2: Green
+        glColor3f(0.004, 0.969, 0);
+        break;
+    case 2:  // Color 3: Pink
+        glColor3f(0.969, 0, 0.467);
+        break;
+    }
+}
+
+
+
+
+
 void fishes() {
+
+    glPushMatrix();
+    glTranslatef(fishX, 0.0f, 0.0f);
+
+
+
+
     // leader fish
     // body quad H I K J
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_QUADS);
     glVertex2f(44, -201);   // H: Left
     glVertex2f(50, -197);   // I: Top
@@ -225,7 +268,8 @@ void fishes() {
     glEnd();
 
     // tail triangle K L M
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_TRIANGLES);
     glVertex2f(56, -200);   // K: Left
     glVertex2f(60, -197);   // L: Top
@@ -237,7 +281,8 @@ void fishes() {
 
     // Top fish 1
     // body quad H1 I1 K1 J1
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_QUADS);
     glVertex2f(54, -190);   // H1: Left
     glVertex2f(60, -186);   // I1: Top
@@ -246,7 +291,8 @@ void fishes() {
     glEnd();
 
     // tail triangle K1 L1 M1
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_TRIANGLES);
     glVertex2f(66, -190);   // K1: Left
     glVertex2f(70, -186);   // L1: Top
@@ -257,7 +303,8 @@ void fishes() {
 
     // Top fish 2
     // body quad H3 I3 K3 J3
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_QUADS);
     glVertex2f(72, -190);   // H3: Left
     glVertex2f(78, -186);   // I3: Top
@@ -266,7 +313,8 @@ void fishes() {
     glEnd();
 
     // tail triangle K3 L3 M3
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_TRIANGLES);
     glVertex2f(84, -189);   // K3: Left
     glVertex2f(88, -186);   // L3: Top
@@ -279,7 +327,8 @@ void fishes() {
 
     // Middle fish 1
     // body quad H5 I5 K5 J5
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_QUADS);
     glVertex2f(62, -201);   // H5: Left
     glVertex2f(68, -197);   // I5: Top
@@ -288,7 +337,8 @@ void fishes() {
     glEnd();
 
     // tail triangle K5 L5 M5
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_TRIANGLES);
     glVertex2f(74, -201);   // K5: Left
     glVertex2f(78, -197);   // L5: Top
@@ -300,7 +350,8 @@ void fishes() {
 
     // Middle fish 3
     // body quad H4 I4 K4 J4
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_QUADS);
     glVertex2f(80, -201);   // H4: Left
     glVertex2f(86, -197);   // I4: Top
@@ -309,7 +360,8 @@ void fishes() {
     glEnd();
 
     // tail triangle K5 L5 M5
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_TRIANGLES);
     glVertex2f(92, -201);   // K4: Left
     glVertex2f(96, -197);   // L4: Top
@@ -321,7 +373,8 @@ void fishes() {
 
     // Bottom fish 1
     // body quad H2 I2 K2 J2
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_QUADS);
     glVertex2f(54, -211);   // H2: Left
     glVertex2f(60, -207);   // I2: Top
@@ -330,7 +383,8 @@ void fishes() {
     glEnd();
 
     // tail triangle K1 L1 M1
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_TRIANGLES);
     glVertex2f(66, -211);   // K2: Left
     glVertex2f(70, -207);   // L2: Top
@@ -342,7 +396,8 @@ void fishes() {
 
     // Bottom fish 2
     // body quad H6 I6 K6 J6
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_QUADS);
     glVertex2f(72, -211);   // H6: Left
     glVertex2f(78, -207);   // I6: Top
@@ -351,7 +406,8 @@ void fishes() {
     glEnd();
 
     // tail triangle K6 L6 M6
-    glColor3f(0.208, 0.416, 0.702); // light blue color
+    // glColor3f(0.208, 0.416, 0.702); // light blue color
+    setFishColor(fishColorIndex);
     glBegin(GL_TRIANGLES);
     glVertex2f(84, -211);   // K6: Left
     glVertex2f(88, -207);   // L6: Top
