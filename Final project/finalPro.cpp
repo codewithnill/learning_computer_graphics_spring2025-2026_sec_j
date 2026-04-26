@@ -100,6 +100,19 @@ void display() {
 
 void streets() {
     glLoadIdentity(); // stops the street from translating to the left
+
+
+    // top separator
+    glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
+    glBegin(GL_QUADS);
+    glVertex2f(-250, -75);  // Top-left corner of separator
+    glVertex2f(250, -75);   // Top-right corner of separator
+    glVertex2f(250, -80);   // Bottom-right corner of separator
+    glVertex2f(-250, -80);  // Bottom-left corner of separator
+    glEnd();
+
+
+
     glColor3f(0.169, 0.169, 0.169);  // Gray color
     glBegin(GL_QUADS);
     glVertex2f(-250, -80); // Top-left corner
