@@ -13,7 +13,8 @@ void sky();
 void fishes();
 void streets();
 void boat();
-void grass();
+// void grass();
+void railway();
 
 
 
@@ -77,7 +78,8 @@ void display() {
 
 
     sky();
-    grass();
+    // grass();
+    railway();
     water();
     fishes();
     streets();
@@ -104,19 +106,59 @@ void sky() {
     glEnd();
 }
 
-void grass() {
-    glColor3f(0, 0.412, 0.008);  // Green grass
+// void grass() {
+//     glColor3f(0, 0.412, 0.008);  // Green grass
+//     glBegin(GL_QUADS);
+//     glVertex2f(-250, -50);  // Z1: Top-left corner of separator
+//     glVertex2f(250, -50);   // A2: Top-right corner of separator
+//     glVertex2f(250, -75);   // W1: Bottom-right corner of separator
+//     glVertex2f(-250, -75);  // V1: Bottom-left corner of separator
+//     glEnd();
+
+
+// }
+
+
+void railway() {
+    // top separator
+    glColor3f(0.5, 0.5, 0.5);  // Gray color for separator
     glBegin(GL_QUADS);
-    glVertex2f(-250, -50);  // Z1: Top-left corner of separator
-    glVertex2f(250, -50);   // A2: Top-right corner of separator
-    glVertex2f(250, -75);   // W1: Bottom-right corner of separator
-    glVertex2f(-250, -75);  // V1: Bottom-left corner of separator
+    glVertex2f(-250, -42);   // Top-left corner
+    glVertex2f(250, -42);    // Top-right corner
+    glVertex2f(250, -47);    // Bottom-right corner
+    glVertex2f(-250, -47);   // Bottom-left corner
     glEnd();
 
 
+    glColor3f(0.89, 0.62, 0);  // Brown color for woods
+
+    // Draw tilted woods from left to right
+    for (float x = -240; x <= 240; x += 20) {
+        glBegin(GL_QUADS);
+        glVertex2f(x, -51);                // Top-left 
+        glVertex2f(x + 7, -51);            // Top-right 
+        glVertex2f(x + 7 - 10, -72);       // Bottom-right 
+        glVertex2f(x - 10, -72);           // Bottom-left
+        glEnd();
+    }
+
+
+    // rail lines
+    glLineWidth(4);
+    glColor3f(0.7, 0.7, 0.7);  // Silver/gray color for rails
+
+    // Upper rail 
+    glBegin(GL_LINES);
+    glVertex2f(-250, -56);   // Left end
+    glVertex2f(250, -56);    // Right end
+    glEnd();
+
+    // Lower rail
+    glBegin(GL_LINES);
+    glVertex2f(-250, -67);   // Left end
+    glVertex2f(250, -67);    // Right end
+    glEnd();
 }
-
-
 
 
 
