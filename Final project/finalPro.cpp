@@ -296,6 +296,25 @@ void boat() {
     glVertex2f(-165, -188); // V: Bottom-left corner
     glEnd();
 
+    // 2 lines in window
+
+    // Z B2
+    glLineWidth(6);
+    glColor3f(0.741, 0.741, 0.741);
+    glBegin(GL_LINES);
+    glVertex2f(-142, -174);
+    glVertex2f(-143, -188);
+    glEnd();
+
+    // D2 C2
+    glLineWidth(6);
+    glColor3f(0.741, 0.741, 0.741);
+    glBegin(GL_LINES);
+    glVertex2f(-120, -178);
+    glVertex2f(-121, -188);
+    glEnd();
+
+
 
 
 
