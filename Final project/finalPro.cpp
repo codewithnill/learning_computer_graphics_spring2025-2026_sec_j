@@ -13,7 +13,7 @@ void sky();
 void fishes();
 void streets();
 void boat();
-// void grass();
+void grass();
 void railway();
 
 
@@ -78,7 +78,7 @@ void display() {
 
 
     sky();
-    // grass();
+    grass();
     railway();
     water();
     fishes();
@@ -106,17 +106,17 @@ void sky() {
     glEnd();
 }
 
-// void grass() {
-//     glColor3f(0, 0.412, 0.008);  // Green grass
-//     glBegin(GL_QUADS);
-//     glVertex2f(-250, -50);  // Z1: Top-left corner of separator
-//     glVertex2f(250, -50);   // A2: Top-right corner of separator
-//     glVertex2f(250, -75);   // W1: Bottom-right corner of separator
-//     glVertex2f(-250, -75);  // V1: Bottom-left corner of separator
-//     glEnd();
+void grass() {
+    glColor3f(0, 0.412, 0.008);  // Green grass
+    glBegin(GL_QUADS);
+    glVertex2f(-250, -20);  // Z1: Top-left corner of separator
+    glVertex2f(250, -20);   // A2: Top-right corner of separator
+    glVertex2f(250, -42);   // W1: Bottom-right corner of separator
+    glVertex2f(-250, -42);  // V1: Bottom-left corner of separator
+    glEnd();
 
 
-// }
+}
 
 
 void railway() {
