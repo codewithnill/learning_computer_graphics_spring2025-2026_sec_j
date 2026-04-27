@@ -120,6 +120,18 @@ void grass() {
 
 
 void railway() {
+    // background (soil)
+    glColor3f(0.55, 0.28, 0.18); // Clay Soil (red/orange):
+    glBegin(GL_QUADS);
+    glVertex2f(-250, -47);   // Top-left corner
+    glVertex2f(250, -47);    // Top-right corner
+    glVertex2f(250, -75);    // Bottom-right corner
+    glVertex2f(-250, -75);   // Bottom-left corner
+    glEnd();
+
+
+
+
     // top separator
     glColor3f(0.5, 0.5, 0.5);  // Gray color for separator
     glBegin(GL_QUADS);
@@ -130,7 +142,7 @@ void railway() {
     glEnd();
 
 
-    glColor3f(0.89, 0.62, 0);  // Brown color for woods
+    glColor3f(0.65, 0.35, 0.30); // cherry wood
 
     // Draw tilted woods from left to right
     for (float x = -240; x <= 240; x += 20) {
@@ -145,7 +157,7 @@ void railway() {
 
     // rail lines
     glLineWidth(4);
-    glColor3f(0.7, 0.7, 0.7);  // Silver/gray color for rails
+    glColor3f(0.75, 0.75, 0.80); // Silver/gray color for rails
 
     // Upper rail 
     glBegin(GL_LINES);
