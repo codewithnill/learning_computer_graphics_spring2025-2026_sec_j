@@ -577,12 +577,22 @@ void buildings() {
     glEnd();
 
     // door line D3 N3
-    glLineWidth(1);
-    glColor3f(0.45, 0.47, 0.50);
+    // glLineWidth(1);
+    // glColor3f(0.45, 0.47, 0.50);
 
-    glBegin(GL_LINES);
-    glVertex2f(-227, 15);   // Up
-    glVertex2f(-227, -20);    // Down
+    // glBegin(GL_LINES);
+    // glVertex2f(-227, 15);   // Up
+    // glVertex2f(-227, -20);    // Down
+    // glEnd();
+
+    // door window
+    // V4 D3 N3 W4
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-232, -5);  // V4: Bottom left
+    glVertex2f(-232, 11); // D3: Top left
+    glVertex2f(-228, 11); // N3: Top right
+    glVertex2f(-228, -5);  // W4: Bottom right 
     glEnd();
 
 
@@ -683,6 +693,43 @@ void buildings() {
     glVertex2f(-166, 42); // F5: Top right
     glVertex2f(-166, 30);  // G6: Bottom right 
     glEnd();
+
+
+
+
+
+
+
+    // building 2
+    // Z4 A5 B5 E5
+    glColor3f(0.18, 0.31, 0.65); // Sapphire
+    glBegin(GL_QUADS);
+    glVertex2f(-151, -20);  // Z4: Bottom left
+    glVertex2f(-151, 120); // A5: Top left
+    glVertex2f(9, 120); // B5: Top right
+    glVertex2f(9, -20);  // E5: Bottom right 
+    glEnd();
+
+    // top P5 Q5 W5 V5
+    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    glBegin(GL_QUADS);
+    glVertex2f(-155, 120);  // P5: Bottom left
+    glVertex2f(-155, 127); // Q5: Top left
+    glVertex2f(14, 127); // W5: Top right
+    glVertex2f(14, 120);  // V5: Bottom right 
+    glEnd();
+
+    // // triangles
+    // glColor3f(0.00, 0.20, 0.40); // Dark Red
+    // glBegin(GL_QUADS);
+    // glVertex2f(-155, 120);  // P5: Bottom left
+    // glVertex2f(-155, 127); // Q5: Top left
+    // glVertex2f(14, 127); // W5: Top right
+
+
+
+
+
 
 
 
