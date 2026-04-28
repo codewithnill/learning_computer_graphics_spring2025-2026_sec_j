@@ -991,6 +991,42 @@ void buildings() {
     glEnd();
 
 
+    // windows
+    // Z11 W11 A12 B12
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(26, 28);  // Z11: Bottom left
+    glVertex2f(26, 40); // W11: Top left
+    glVertex2f(46, 40); // A12: Top right
+    glVertex2f(46, 28);  // B12: Bottom right 
+    glEnd();
+
+    // N11 M11 O11 P11
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(26, 60);  // N11: Bottom left
+    glVertex2f(26, 72); // M11: Top left
+    glVertex2f(46, 72); // O11: Top right
+    glVertex2f(46, 60);  // P11: Bottom right 
+    glEnd();
+
+    // S11 R11 Q11 V11
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(54, 60);  // S11: Bottom left
+    glVertex2f(54, 72); // R11: Top left
+    glVertex2f(74, 72); // Q11: Top right
+    glVertex2f(74, 60);  // V11: Bottom right 
+    glEnd();
+
+    // D12 C12 E12 F12
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(54, 28);  // D12: Bottom left
+    glVertex2f(54, 40); // C12: Top left
+    glVertex2f(74, 40); // E12: Top right
+    glVertex2f(74, 28);  // F12: Bottom right 
+    glEnd();
 
 
 
