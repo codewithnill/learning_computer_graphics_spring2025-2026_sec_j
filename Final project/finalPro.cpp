@@ -763,12 +763,21 @@ void buildings() {
 
     // building 3
     // A7 B7 C7 D7
-    glColor3f(0.80, 0.40, 0.15); // Sapphire
+    glColor3f(0.93, 0.57, 0.13); // Carrot Orange
     glBegin(GL_QUADS);
     glVertex2f(20, -20);  // A7: Bottom left
     glVertex2f(20, 80); // B7: Top left
     glVertex2f(80, 80); // C7: Top right
     glVertex2f(80, -20);  // D7: Bottom right 
+    glEnd();
+
+    // top I7 J7 K7 L7
+    glColor3f(0.80, 0.40, 0.15); // Burnt Orange
+    glBegin(GL_QUADS);
+    glVertex2f(16, 80);  // I7: Bottom left
+    glVertex2f(16, 86); // J7: Top left
+    glVertex2f(84, 86); // K7: Top right
+    glVertex2f(84, 80);  // L7: Bottom right 
     glEnd();
 
 
