@@ -746,6 +746,15 @@ void buildings() {
     glVertex2f(-30, 127); // E6: Bottom right
     glEnd();
 
+    // E6 Z6 P6
+    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    glBegin(GL_TRIANGLES);
+    glVertex2f(-30, 127);  // E6: Bottom left
+    glVertex2f(-11, 180); // Z6: Top
+    glVertex2f(9, 127); // P6: Bottom right
+    glEnd();
+
+
 
 
 
