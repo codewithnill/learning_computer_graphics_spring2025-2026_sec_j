@@ -815,6 +815,122 @@ void buildings() {
 
 
 
+    // windows
+    // M9 O9 P9 N9
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-140, 92);  // M9: Bottom left
+    glVertex2f(-140, 104); // O9: Top left
+    glVertex2f(-120, 104); // P9: Top right
+    glVertex2f(-120, 92);  // N9: Bottom right 
+    glEnd();
+
+    // S9 Q9 R9 T9
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-100, 92);  // S9: Bottom left
+    glVertex2f(-100, 104); // Q9: Top left
+    glVertex2f(-80, 104); // R9: Top right
+    glVertex2f(-80, 92);  // T9: Bottom right 
+    glEnd();
+
+    // G10 E10 F10 H10
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-60, 92);  // G10: Bottom left
+    glVertex2f(-60, 104); // E10: Top left
+    glVertex2f(-40, 104); // F10: Top right
+    glVertex2f(-40, 92);  // H10: Bottom right 
+    glEnd();
+
+    // S10 Q10 R10 T10
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-20, 92);  // S10: Bottom left
+    glVertex2f(-20, 104); // Q10: Top left
+    glVertex2f(0, 104); // R10: Top right
+    glVertex2f(0, 92);  // T10: Bottom right 
+    glEnd();
+
+
+    // I9 K9 L9 J9
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-140, 60);  // I9: Bottom left
+    glVertex2f(-140, 72); // K9: Top left
+    glVertex2f(-120, 72); // L9: Top right
+    glVertex2f(-120, 60);  // J9: Bottom right 
+    glEnd();
+
+
+    // W9 U9 V9 Z9
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-100, 60);  // W9: Bottom left
+    glVertex2f(-100, 72); // U9: Top left
+    glVertex2f(-80, 72); // V9: Top right
+    glVertex2f(-80, 60);  // Z9: Bottom right 
+    glEnd();
+
+    // K10 I10 J10 L10
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-60, 60);  // K10: Bottom left
+    glVertex2f(-60, 72); // I10: Top left
+    glVertex2f(-40, 72); // J10: Top right
+    glVertex2f(-40, 60);  // L10: Bottom right 
+    glEnd();
+
+    // W10 U10 V10 Z10
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-20, 60);  // W10: Bottom left
+    glVertex2f(-20, 72); // U10: Top left
+    glVertex2f(0, 72); // V10: Top right
+    glVertex2f(0, 60);  // Z10: Bottom right 
+    glEnd();
+
+    // E9 G9 H9 F9
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-140, 28);  // E9: Bottom left
+    glVertex2f(-140, 40); // G9: Top left
+    glVertex2f(-120, 40); // H9: Top right
+    glVertex2f(-120, 28);  // F9: Bottom right 
+    glEnd();
+
+    // C10 A10 B10 D10
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-100, 28);  // C10: Bottom left
+    glVertex2f(-100, 40); // A10: Top left
+    glVertex2f(-80, 40); // B10: Top right
+    glVertex2f(-80, 28);  // D10: Bottom right 
+    glEnd();
+
+    // O10 M10 N10 P10
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-60, 28);  // O10: Bottom left
+    glVertex2f(-60, 40); // M10: Top left
+    glVertex2f(-40, 40); // N10: Top right
+    glVertex2f(-40, 28);  // P10: Bottom right 
+    glEnd();
+
+    // C11 A11 B11 D11
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-20, 28);  // C11: Bottom left
+    glVertex2f(-20, 40); // A11: Top left
+    glVertex2f(0, 40); // B11: Top right
+    glVertex2f(0, 28);  // D11: Bottom right 
+    glEnd();
+
+
+
+
+
+
 
 
 
