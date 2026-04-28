@@ -733,14 +733,14 @@ void buildings() {
 
 
     // door window
-    // V4 D3 N3 W4
-    // glColor3f(0.90, 0.92, 0.95); // Lake Water
-    // glBegin(GL_QUADS);     // 
-    // glVertex2f(-232, -5);  // V4: Bottom left
-    // glVertex2f(-232, 11); // D3: Top left
-    // glVertex2f(-228, 11); // N3: Top right
-    // glVertex2f(-228, -5);  // W4: Bottom right 
-    // glEnd();
+    // M8 N8 O8 P8
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);
+    glVertex2f(-143, -5);  // M8: Bottom left
+    glVertex2f(-143, 11); // N8: Top left
+    glVertex2f(-139, 11); // O8: Top right
+    glVertex2f(-139, -5);  // P8: Bottom right 
+    glEnd();
 
 
 
