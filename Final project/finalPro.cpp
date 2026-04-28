@@ -789,7 +789,7 @@ void buildings() {
 
     // building 4
     // Ground M7 N7 O7 P7
-    glColor3f(0.58, 0.44, 0.86);
+    glColor3f(0.60, 0.20, 0.80); // Amethyst
     glBegin(GL_QUADS);
     glVertex2f(90, -20);  // M7: Bottom left
     glVertex2f(90, 20); // N7: Top left
@@ -798,7 +798,7 @@ void buildings() {
     glEnd();
 
     // second floor W7 Z7 H8 G8
-    glColor3f(0.58, 0.44, 0.86);
+    glColor3f(0.60, 0.20, 0.80); // Amethyst
     glBegin(GL_QUADS);
     glVertex2f(100, 20);  // W7: Bottom left
     glVertex2f(100, 54); // Z7: Top left
@@ -806,15 +806,14 @@ void buildings() {
     glVertex2f(230, 20);  // G8: Bottom right 
     glEnd();
 
-    // top I7 J7 K7 L7
-    // glColor3f(0.80, 0.40, 0.15); // Burnt Orange
-    // glBegin(GL_QUADS);
-    // glVertex2f(16, 80);  // I7: Bottom left
-    // glVertex2f(16, 86); // J7: Top left
-    // glVertex2f(84, 86); // K7: Top right
-    // glVertex2f(84, 80);  // L7: Bottom right 
-    // glEnd();
-
+    // top Q7 R7 V7 S7
+    glColor3f(0.30, 0.00, 0.50); // Dark Purple
+    glBegin(GL_QUADS);
+    glVertex2f(96, 54);  // I7: Bottom left
+    glVertex2f(96, 60); // J7: Top left
+    glVertex2f(234, 60); // K7: Top right
+    glVertex2f(234, 54);  // L7: Bottom right 
+    glEnd();
 
 
 
