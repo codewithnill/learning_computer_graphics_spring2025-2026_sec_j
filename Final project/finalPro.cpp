@@ -721,30 +721,6 @@ void buildings() {
 
 
 
-    //door
-    // I8 J8 K8 L8
-    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
-    glBegin(GL_QUADS);     // 
-    glVertex2f(-145, -20);  // I8: Bottom left
-    glVertex2f(-145, 15); // J8: Top left
-    glVertex2f(-131, 15); // K8: Top right
-    glVertex2f(-131, -20);  // L8: Bottom right 
-    glEnd();
-
-
-    // door window
-    // M8 N8 O8 P8
-    glColor3f(0.90, 0.92, 0.95); // Lake Water
-    glBegin(GL_QUADS);
-    glVertex2f(-143, -5);  // M8: Bottom left
-    glVertex2f(-143, 11); // N8: Top left
-    glVertex2f(-139, 11); // O8: Top right
-    glVertex2f(-139, -5);  // P8: Bottom right 
-    glEnd();
-
-
-
-
     // triangles
 
     // Z5 Q6 A6
@@ -779,6 +755,68 @@ void buildings() {
     glVertex2f(-11, 180); // Z6: Top
     glVertex2f(9, 127); // P6: Bottom right
     glEnd();
+
+
+
+    //door
+    // I8 J8 K8 L8
+    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-145, -20);  // I8: Bottom left
+    glVertex2f(-145, 15); // J8: Top left
+    glVertex2f(-131, 15); // K8: Top right
+    glVertex2f(-131, -20);  // L8: Bottom right 
+    glEnd();
+
+
+    // door window
+    // M8 N8 O8 P8
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);
+    glVertex2f(-143, -5);  // M8: Bottom left
+    glVertex2f(-143, 11); // N8: Top left
+    glVertex2f(-139, 11); // O8: Top right
+    glVertex2f(-139, -5);  // P8: Bottom right 
+    glEnd();
+
+
+    // ground floor window
+    // V8 Q8 W8 Z8
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-120, 0);  // V8: Bottom left
+    glVertex2f(-120, 12); // Q8: Top left
+    glVertex2f(-80, 12); // W8: Top right
+    glVertex2f(-80, 0);  // Z8: Bottom right 
+    glEnd();
+
+
+    // garage door
+    // V9 B9 D9 C9
+    glColor3f(0.74, 0.76, 0.80); // darker lake water
+    glBegin(GL_QUADS);
+    glVertex2f(-70, -20);  // A9: Bottom left
+    glVertex2f(-70, 15); // B9: Top left
+    glVertex2f(3, 15); // D9: Top right
+    glVertex2f(3, -20);  // C9: Bottom right 
+    glEnd();
+
+    // horizontal lines on garage door
+    glLineWidth(1);
+    glColor3f(0.50, 0.52, 0.56);
+
+    for (float y = -15; y <= 15; y += 6) {
+        glBegin(GL_LINES);
+        glVertex2f(-70, y);   // Left edge of garage door
+        glVertex2f(3, y);     // Right edge of garage door
+        glEnd();
+    }
+
+
+
+
+
+
 
 
 
