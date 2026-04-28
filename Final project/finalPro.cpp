@@ -719,12 +719,15 @@ void buildings() {
     glVertex2f(14, 120);  // V5: Bottom right 
     glEnd();
 
-    // // triangles
-    // glColor3f(0.00, 0.20, 0.40); // Dark Red
-    // glBegin(GL_QUADS);
-    // glVertex2f(-155, 120);  // P5: Bottom left
-    // glVertex2f(-155, 127); // Q5: Top left
-    // glVertex2f(14, 127); // W5: Top right
+    // triangles
+
+    // Z5 Q6 A6
+    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    glBegin(GL_TRIANGLES);
+    glVertex2f(-151, 127);  // Z5: Bottom left
+    glVertex2f(-131, 179); // Q6: Top
+    glVertex2f(-111, 127); // A6: Bottom right
+    glEnd();
 
 
 
