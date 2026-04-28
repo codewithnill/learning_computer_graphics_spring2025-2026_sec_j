@@ -10,6 +10,7 @@ int fishColorIndex = 0; // tracks current color (0, 1, or 2)
 // prototype
 void water();
 void sky();
+void buildings();
 void fishes();
 void streets();
 void boat();
@@ -78,6 +79,7 @@ void display() {
 
 
     sky();
+    buildings();
     grass();
     railway();
     water();
@@ -104,6 +106,42 @@ void sky() {
     glVertex2f(-250, 150); // Bottom-left corner 
     glVertex2f(250, 150);  // Bottom-right corner 
     glEnd();
+}
+
+void buildings() {
+    // from left to right
+
+    // building 1
+    // E4 N2 F2 G2
+    glColor3f(0.86, 0.08, 0.24); // Crimson Red
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-240, -20);  // E4: Bottom left
+    glVertex2f(-240, 100); // N2: Top left
+    glVertex2f(-160, 100); // F2: Top right
+    glVertex2f(-160, -20);  // G2: Bottom right 
+    glEnd();
+
+    //door
+    // Q2 D3 N3 P2
+    glColor3f(0.55, 0.38, 0.25); // Medium Walnut:
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-234, -20);  // Q2: Bottom left
+    glVertex2f(-234, 15); // O2: Top left
+    glVertex2f(-220, 15); // R2: Top right
+    glVertex2f(-220, -20);  // P2: Bottom right 
+    glEnd();
+
+    // ground floor window
+    glColor3f(0.25, 0.45, 0.70); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-210, 0);  // U2: Bottom left
+    glVertex2f(-234, 15); // S2: Top left
+    glVertex2f(-220, 15); // T2: Top right
+    glVertex2f(-220, -20);  // V2: Bottom right 
+    glEnd();
+
+
+
 }
 
 void grass() {
@@ -253,8 +291,8 @@ void boat() {
     // 1st quad B1 C1 E1 D1
     glColor3f(0.929, 0, 0);  // Red color
     glBegin(GL_QUADS);
-    glVertex2f(-187, -208); // B1: Top-left corner
-    glVertex2f(-68, -208);  // C1: Top-right corner
+    glVertex2f(-188, -207); // B1: Top-left corner
+    glVertex2f(-68, -207);  // C1: Top-right corner
     glVertex2f(-69, -212);  // E1: Bottom-right corner
     glVertex2f(-182, -212); // D1: Bottom-left corner
     glEnd();
@@ -264,8 +302,8 @@ void boat() {
     glBegin(GL_QUADS);
     glVertex2f(-182, -212); // D1: Top-left corner
     glVertex2f(-69, -212);  // E1: Top-right corner
-    glVertex2f(-69, -216);  // G1: Bottom-right corner
-    glVertex2f(-178, -216); // F1: Bottom-left corner
+    glVertex2f(-70, -218);  // G1: Bottom-right corner
+    glVertex2f(-176, -218); // F1: Bottom-left corner
     glEnd();
 
 
