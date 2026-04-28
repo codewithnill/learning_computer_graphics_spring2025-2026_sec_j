@@ -959,6 +959,16 @@ void buildings() {
     glVertex2f(84, 80);  // L7: Bottom right 
     glEnd();
 
+    // door E7 G7 H7 F7
+    glColor3f(0.80, 0.40, 0.15); // Burnt Orange
+    glBegin(GL_QUADS);
+    glVertex2f(26, -20);  // E7: Bottom left
+    glVertex2f(26, 15); // G7: Top left
+    glVertex2f(40, 15); // H7: Top right
+    glVertex2f(40, -20);  // F7: Bottom right 
+    glEnd();
+
+
 
 
 
