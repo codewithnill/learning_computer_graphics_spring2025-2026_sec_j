@@ -980,6 +980,18 @@ void buildings() {
     glEnd();
 
 
+    // ground floor window
+    // E11 F11 G11 H11
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(46, 0);  // E11: Bottom left
+    glVertex2f(46, 12); // F11: Top left
+    glVertex2f(74, 12); // G11: Top right
+    glVertex2f(74, 0);  // H11: Bottom right 
+    glEnd();
+
+
+
 
 
 
