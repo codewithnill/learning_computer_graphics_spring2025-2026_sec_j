@@ -123,7 +123,7 @@ void buildings() {
 
     //door
     // Q2 D3 N3 P2
-    glColor3f(0.55, 0.38, 0.25); // Medium Walnut:
+    glColor3f(0.85, 0.72, 0.55); // Pine/Natural Wood
     glBegin(GL_QUADS);     // 
     glVertex2f(-234, -20);  // Q2: Bottom left
     glVertex2f(-234, 15); // O2: Top left
@@ -131,13 +131,25 @@ void buildings() {
     glVertex2f(-220, -20);  // P2: Bottom right 
     glEnd();
 
+    // door line D3 N3
+    glLineWidth(1);
+    glColor3f(0.45, 0.47, 0.50);
+
+    glBegin(GL_LINES);
+    glVertex2f(-227, 15);   // Up
+    glVertex2f(-227, -20);    // Down
+    glEnd();
+
+
+
     // ground floor window
-    glColor3f(0.25, 0.45, 0.70); // Lake Water
+    // U2 S2 T2 V2
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
     glBegin(GL_QUADS);     // 
     glVertex2f(-210, 0);  // U2: Bottom left
-    glVertex2f(-234, 15); // S2: Top left
-    glVertex2f(-220, 15); // T2: Top right
-    glVertex2f(-220, -20);  // V2: Bottom right 
+    glVertex2f(-210, 12); // S2: Top left
+    glVertex2f(-170, 12); // T2: Top right
+    glVertex2f(-170, 0);  // V2: Bottom right 
     glEnd();
 
 
