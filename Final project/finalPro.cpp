@@ -108,53 +108,7 @@ void sky() {
     glEnd();
 }
 
-void buildings() {
-    // from left to right
 
-    // building 1
-    // E4 N2 F2 G2
-    glColor3f(0.86, 0.08, 0.24); // Crimson Red
-    glBegin(GL_QUADS);     // 
-    glVertex2f(-240, -20);  // E4: Bottom left
-    glVertex2f(-240, 100); // N2: Top left
-    glVertex2f(-160, 100); // F2: Top right
-    glVertex2f(-160, -20);  // G2: Bottom right 
-    glEnd();
-
-    //door
-    // Q2 D3 N3 P2
-    glColor3f(0.85, 0.72, 0.55); // Pine/Natural Wood
-    glBegin(GL_QUADS);     // 
-    glVertex2f(-234, -20);  // Q2: Bottom left
-    glVertex2f(-234, 15); // O2: Top left
-    glVertex2f(-220, 15); // R2: Top right
-    glVertex2f(-220, -20);  // P2: Bottom right 
-    glEnd();
-
-    // door line D3 N3
-    glLineWidth(1);
-    glColor3f(0.45, 0.47, 0.50);
-
-    glBegin(GL_LINES);
-    glVertex2f(-227, 15);   // Up
-    glVertex2f(-227, -20);    // Down
-    glEnd();
-
-
-
-    // ground floor window
-    // U2 S2 T2 V2
-    glColor3f(0.90, 0.92, 0.95); // Lake Water
-    glBegin(GL_QUADS);     // 
-    glVertex2f(-210, 0);  // U2: Bottom left
-    glVertex2f(-210, 12); // S2: Top left
-    glVertex2f(-170, 12); // T2: Top right
-    glVertex2f(-170, 0);  // V2: Bottom right 
-    glEnd();
-
-
-
-}
 
 void grass() {
     glColor3f(0, 0.412, 0.008);  // Green grass
@@ -586,4 +540,155 @@ int main(int argc, char** argv) {
 
     glutMainLoop(); // Enter the event-processing loop (keeps the program alive)
     return 0;
+}
+
+
+void buildings() {
+    // from left to right
+
+    // building 1
+    // E4 N2 F2 G2
+    glColor3f(0.86, 0.08, 0.24); // Crimson Red
+    glBegin(GL_QUADS);
+    glVertex2f(-240, -20);  // E4: Bottom left
+    glVertex2f(-240, 100); // N2: Top left
+    glVertex2f(-160, 100); // F2: Top right
+    glVertex2f(-160, -20);  // G2: Bottom right 
+    glEnd();
+
+    // top W2 Z2 B3 A3
+    glColor3f(0.55, 0.00, 0.00); // Dark Red
+    glBegin(GL_QUADS);
+    glVertex2f(-244, 100);  // W2: Bottom left
+    glVertex2f(-244, 106); // Z2: Top left
+    glVertex2f(-156, 106); // B3: Top right
+    glVertex2f(-156, 100);  // A3: Bottom right 
+    glEnd();
+
+
+    //door
+    // Q2 D3 N3 P2
+    glColor3f(0.55, 0.00, 0.00); // Pine/Natural Wood
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-234, -20);  // Q2: Bottom left
+    glVertex2f(-234, 15); // O2: Top left
+    glVertex2f(-220, 15); // R2: Top right
+    glVertex2f(-220, -20);  // P2: Bottom right 
+    glEnd();
+
+    // door line D3 N3
+    glLineWidth(1);
+    glColor3f(0.45, 0.47, 0.50);
+
+    glBegin(GL_LINES);
+    glVertex2f(-227, 15);   // Up
+    glVertex2f(-227, -20);    // Down
+    glEnd();
+
+
+
+    // ground floor window
+    // U2 S2 T2 V2
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-210, 0);  // U2: Bottom left
+    glVertex2f(-210, 12); // S2: Top left
+    glVertex2f(-170, 12); // T2: Top right
+    glVertex2f(-170, 0);  // V2: Bottom right 
+    glEnd();
+
+
+    // rest of the windows
+    // top to bottom left to right
+    // T3 U3 C4 D4
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-234, 80);  // T3: Bottom left
+    glVertex2f(-234, 92); // U3: Top left
+    glVertex2f(-218, 92); // C4: Top right
+    glVertex2f(-218, 80);  // D4: Bottom right 
+    glEnd();
+
+
+    // T4 R4 S4 U4
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-208, 80);  // T4: Bottom left
+    glVertex2f(-208, 92); // R4: Top left
+    glVertex2f(-192, 92); // S4: Top right
+    glVertex2f(-192, 80);  // U4: Bottom right 
+    glEnd();
+
+
+    // O4 N4 F4 G4
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-182, 80);  // O4: Bottom left
+    glVertex2f(-182, 92); // N4: Top left
+    glVertex2f(-166, 92); // F4: Top right
+    glVertex2f(-166, 80);  // G4: Bottom right 
+    glEnd();
+
+    // T7 U7 C6 D6
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-234, 55);  // T7: Bottom left
+    glVertex2f(-234, 67); // U7: Top left
+    glVertex2f(-218, 67); // C6: Top right
+    glVertex2f(-218, 55);  // D6: Bottom right 
+    glEnd();
+
+
+    // T8 R6 S6 U8
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-208, 55);  // T8: Bottom left
+    glVertex2f(-208, 67); // R6: Top left
+    glVertex2f(-192, 67); // S6: Top right
+    glVertex2f(-192, 55);  // U8: Bottom right 
+    glEnd();
+
+    // O6 N6 F6 G6
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-182, 55);  // O6: Bottom left
+    glVertex2f(-182, 67); // N6: Top left
+    glVertex2f(-166, 67); // F6: Top right
+    glVertex2f(-166, 55);  // G6: Bottom right 
+    glEnd();
+
+    // T5 U5 C5 D5
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-234, 30);  // T5: Bottom left
+    glVertex2f(-234, 42); // U5: Top left
+    glVertex2f(-218, 42); // C5: Top right
+    glVertex2f(-218, 30);  // D5: Bottom right 
+    glEnd();
+
+    // T6 R5 S5 U6
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-208, 30);  // T6: Bottom left
+    glVertex2f(-208, 42); // R5: Top left
+    glVertex2f(-192, 42); // S5: Top right
+    glVertex2f(-192, 30);  // U6: Bottom right 
+    glEnd();
+
+    // O5 N5 F5 G5
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(-182, 30);  // O5: Bottom left
+    glVertex2f(-182, 42); // N5: Top left
+    glVertex2f(-166, 42); // F5: Top right
+    glVertex2f(-166, 30);  // G6: Bottom right 
+    glEnd();
+
+
+
+
+
+
+
+
 }
