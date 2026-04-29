@@ -1065,6 +1065,74 @@ void buildings() {
     glEnd();
 
 
+    // garage door 1
+    // G12 H12 K12 M12
+    glColor3f(0.74, 0.76, 0.80); // darker lake water
+    glBegin(GL_QUADS);
+    glVertex2f(100, -20);  // G12: Bottom left
+    glVertex2f(100, 15); // H12: Top left
+    glVertex2f(160, 15); // K12: Top right
+    glVertex2f(160, -20);  // M12: Bottom right 
+    glEnd();
+
+    // horizontal lines on garage door 1
+    glLineWidth(1);
+    glColor3f(0.50, 0.52, 0.56);
+
+    for (float y = -15; y <= 15; y += 6) {
+        glBegin(GL_LINES);
+        glVertex2f(100, y);   // Left edge of garage door
+        glVertex2f(160, y);   // Right edge of garage door
+        glEnd();
+    }
+
+
+    // garage door 2
+    // N12 L12 J12 I12
+    glColor3f(0.74, 0.76, 0.80); // darker lake water
+    glBegin(GL_QUADS);
+    glVertex2f(170, -20);  // N12: Bottom left
+    glVertex2f(170, 15); // L12: Top left
+    glVertex2f(230, 15); // J12: Top right
+    glVertex2f(230, -20);  // I12: Bottom right 
+    glEnd();
+
+
+
+
+    // horizontal lines on garage door 2
+    glLineWidth(1);
+    glColor3f(0.50, 0.52, 0.56);
+
+    for (float y = -15; y <= 15; y += 6) {
+        glBegin(GL_LINES);
+        glVertex2f(170, y);   // Left edge of garage door
+        glVertex2f(230, y);   // Right edge of garage door
+        glEnd();
+    }
+
+
+    // window 1
+    // P12 O12 Q12 R12
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(110, 28);  // P12: Bottom left
+    glVertex2f(110, 40); // O12: Top left
+    glVertex2f(150, 40); // Q12: Top right
+    glVertex2f(150, 28);  // R12: Bottom right 
+    glEnd();
+
+    // window 2
+    // V12 S12 W12 Z12
+    glColor3f(0.90, 0.92, 0.95); // Lake Water
+    glBegin(GL_QUADS);     // 
+    glVertex2f(180, 28);  // V12: Bottom left
+    glVertex2f(180, 40); // S12: Top left
+    glVertex2f(220, 40); // W12: Top right
+    glVertex2f(220, 28);  // Z12: Bottom right 
+    glEnd();
+
+
 
 
 
