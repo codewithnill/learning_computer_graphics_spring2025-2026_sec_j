@@ -12,6 +12,7 @@ int fishColorIndex = 0; // tracks current color (0, 1, or 2)
 void circle();
 void water();
 void sky();
+void cloudset();
 void sun();
 void buildings();
 void fishes();
@@ -98,6 +99,7 @@ void display() {
 
     sky();
     sun();
+    cloudset();
     buildings();
     grass();
     railway();
@@ -127,12 +129,28 @@ void sky() {
     glEnd();
 }
 
+void cloudset() {
+    // A
+    circle(248, 250, 252, 5, -200, 200);
+    circle(248, 250, 252, 8, -210, 205);
+    circle(248, 250, 252, 9, -198, 212);
+    circle(248, 250, 252, 8, -185, 216);
+    circle(248, 250, 252, 8, -190, 203);
+    circle(248, 250, 252, 8, -180, 203);
+    circle(248, 250, 252, 8, -170, 200);
+    circle(248, 250, 252, 8, -173, 213);
+    circle(248, 250, 252, 8, -163, 207);
+
+
+    // B
+}
+
 void sun() {
     //glPushMatrix();
     //glTranslatef(x, y, 0);
     //glRotatef(angle1, 0, 0, 1);
     //circle(255, 255, 200, 20, 180, 200);  // Outer glow
-    circle(255, 220, 140, 17, -200, 200);   // Main sun
+    circle(255, 220, 140, 17, -200, 210);   // Main sun
     //circle(255, 200, 0, 8, 180, 200);     // Inner core
     //glPopMatrix();
 }
