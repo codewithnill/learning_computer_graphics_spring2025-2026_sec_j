@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <GL/gl.h> // for MS Windows
 #include <GL/glut.h> // GLUT, include glu.h and gl.h
+#include <cmath>
 
 
 float boatX = 0.0f;  // controls boat's horizontal position
@@ -11,6 +12,7 @@ int fishColorIndex = 0; // tracks current color (0, 1, or 2)
 void circle();
 void water();
 void sky();
+void sun();
 void buildings();
 void fishes();
 void streets();
@@ -55,19 +57,11 @@ void update(int value) {
 void circle(float r, float g, float b, float radius, float xc, float yc)
 {
     glBegin(GL_POLYGON);
-    for (int i = 0;i < 200;i++) /* 200-> number of points/vertices
-        used to draw the circle.The loop runs 200 times, creating 200 points around the circle. */
+    for (int i = 0;i < 360;i++)
     {
         glColor3ub(r, g, b);
         float pi = 3.1416;
-        float A = (i * 2 * pi) / 200;
-        // i = 0    A = (0 * 2pi) / 200 = 0 deg
-        // i = 1    A = (1 * 2pi) / 200 = 1.8deg
-        // i = 2    A = (2 * 2pi) / 200 = 3.6deg
-        // i = 50   A = (50 * 2pi) / 200 = 90deg
-        // i = 100  A = (100 * 2pi) / 200 = 180deg
-        // i = 150  A = (150 * 2pi) / 200 = 270deg
-        // i = 199  A = (199 * 2pi) / 200 = 358.2deg
+        float A = (i * 2 * pi) / 180;
         float x = radius * cos(A);
         float y = radius * sin(A);
         glVertex2f(x + xc, y + yc);
@@ -103,6 +97,7 @@ void display() {
 
 
     sky();
+    sun();
     buildings();
     grass();
     railway();
@@ -130,6 +125,16 @@ void sky() {
     glVertex2f(-250, -20); // Bottom-left corner 
     glVertex2f(250, -20);  // Bottom-right corner 
     glEnd();
+}
+
+void sun() {
+    //glPushMatrix();
+    //glTranslatef(x, y, 0);
+    //glRotatef(angle1, 0, 0, 1);
+    //circle(255, 255, 200, 20, 180, 200);  // Outer glow
+    circle(255, 220, 140, 17, -200, 200);   // Main sun
+    //circle(255, 200, 0, 8, 180, 200);     // Inner core
+    //glPopMatrix();
 }
 
 
