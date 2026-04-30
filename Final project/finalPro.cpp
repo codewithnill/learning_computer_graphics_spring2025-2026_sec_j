@@ -52,7 +52,7 @@ void update(int value) {
 
 
     // Cloud movement
-    cloudX -= 0.2;  // Move left
+    cloudX -= 0.1;  // Move left
 
     // Reset when offset exceeds cloud width
     if (cloudX < -500) {
