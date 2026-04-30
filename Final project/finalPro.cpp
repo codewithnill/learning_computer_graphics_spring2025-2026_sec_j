@@ -8,6 +8,7 @@ float fishX = 0.0f;  // fish group position controller
 int fishColorIndex = 0; // tracks current color (0, 1, or 2)
 
 // prototype
+void circle();
 void water();
 void sky();
 void buildings();
@@ -49,6 +50,29 @@ void update(int value) {
 
     glutPostRedisplay();  // Redraw the scene
     glutTimerFunc(8, update, 0);  // Call again 
+}
+
+void circle(float r, float g, float b, float radius, float xc, float yc)
+{
+    glBegin(GL_POLYGON);
+    for (int i = 0;i < 200;i++) /* 200-> number of points/vertices
+        used to draw the circle.The loop runs 200 times, creating 200 points around the circle. */
+    {
+        glColor3ub(r, g, b);
+        float pi = 3.1416;
+        float A = (i * 2 * pi) / 200;
+        // i = 0    A = (0 * 2pi) / 200 = 0 deg
+        // i = 1    A = (1 * 2pi) / 200 = 1.8deg
+        // i = 2    A = (2 * 2pi) / 200 = 3.6deg
+        // i = 50   A = (50 * 2pi) / 200 = 90deg
+        // i = 100  A = (100 * 2pi) / 200 = 180deg
+        // i = 150  A = (150 * 2pi) / 200 = 270deg
+        // i = 199  A = (199 * 2pi) / 200 = 358.2deg
+        float x = radius * cos(A);
+        float y = radius * sin(A);
+        glVertex2f(x + xc, y + yc);
+    }
+    glEnd();
 }
 
 
@@ -136,7 +160,7 @@ void railway() {
 
 
 
-    // top separator
+    // top separator R1 V1 W1 S1
     glColor3f(0.5, 0.5, 0.5);  // Gray color for separator
     glBegin(GL_QUADS);
     glVertex2f(-250, -42);   // Top-left corner
@@ -182,7 +206,8 @@ void streets() {
     glLoadIdentity(); // stops the street from translating to the left
 
 
-    // top separator
+    // top separator N1 A13 B13 O1
+
     glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
     glBegin(GL_QUADS);
     glVertex2f(-250, -75);  // Top-left corner of separator
