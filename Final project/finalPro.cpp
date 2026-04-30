@@ -18,6 +18,7 @@ void sun();
 void buildings();
 void fishes();
 void streets();
+void carA();
 void boat();
 void grass();
 void railway();
@@ -116,6 +117,7 @@ void display() {
     water();
     fishes();
     streets();
+    //carA();
     boat();
 
 
@@ -123,7 +125,8 @@ void display() {
 
 
 
-    glFlush(); // Render now (forces all OpenGL commands to execute immediately)
+    //glFlush(); // Render now (forces all OpenGL commands to execute immediately)
+    glutSwapBuffers();
 }
 
 
@@ -471,6 +474,25 @@ void streets() {
 
 
 
+// void carA() {
+//     // body
+//     glColor3f(1, 0.773, 0); //orange
+//     glBegin(GL_POLYGON);
+//     glVertex2f(96, -143); // C13
+//     glVertex2f(98, -127); // D13
+//     glVertex2f(115, -125); // E13
+//     glVertex2f(125, -109); // F13
+//     glVertex2f(146, -109); // G13
+//     glVertex2f(150, -124); // H13
+//     glVertex2f(161, -124); // I13
+//     glVertex2f(170, -124); // L13
+//     glVertex2f(172, -127); // M13
+//     glVertex2f(170, -144); // N13
+//     glEnd();
+// }
+
+
+
 void water() {
     // adding a separator between street bottom and water top
     glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
@@ -785,6 +807,7 @@ int main(int argc, char** argv) {
     //argc = argument count (number of command-line arguments)
     //argv = argument vector (array of command-line argument strings)
     glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(1200, 600); // Set the window's initial width & height
     glutInitWindowPosition(70, 70);  // Set the window's initial position according to the monitor
     glutCreateWindow("Scene"); // Create a window with the given title
