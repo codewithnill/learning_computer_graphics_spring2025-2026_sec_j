@@ -103,8 +103,8 @@ void sky() {
     glBegin(GL_QUADS);     // rectangle (quadrilateral)
     glVertex2f(250, 250);  // Top-right corner (highest possible)
     glVertex2f(-250, 250); // Top-left corner (highest possible)
-    glVertex2f(-250, 150); // Bottom-left corner 
-    glVertex2f(250, 150);  // Bottom-right corner 
+    glVertex2f(-250, -20); // Bottom-left corner 
+    glVertex2f(250, -20);  // Bottom-right corner 
     glEnd();
 }
 
