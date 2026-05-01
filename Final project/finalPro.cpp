@@ -453,7 +453,7 @@ void train() {
 
 
     // first body
-    glColor3f(0.85, 0.85, 0.88);
+    glColor3f(0, 0.176, 0.349);
     glBegin(GL_POLYGON);
     glVertex2f(-211, 22); // C13: top left 
     glVertex2f(-107, 22); // F13: top right
@@ -463,7 +463,7 @@ void train() {
     glEnd();
 
     // second body
-    glColor3f(0.85, 0.85, 0.88);
+    glColor3f(0, 0.176, 0.349);
     glBegin(GL_POLYGON);
     glVertex2f(-104, 22); // H13: top left 
     glVertex2f(70, 22); // J13: top right
@@ -474,7 +474,7 @@ void train() {
 
     // windows in first body
     // M13 P13 O13 N13
-    glColor3f(0.439, 0.439, 0.435);
+    glColor3f(0.569, 0.58, 0.58);
     glBegin(GL_QUADS);
     glVertex2f(-209, 18);   // M13: Top-left corner
     glVertex2f(-185, 18);    // P13: Top-right corner
@@ -483,7 +483,7 @@ void train() {
     glEnd();
 
     // Q13 S13 T13 R13
-    glColor3f(0.439, 0.439, 0.435);
+    glColor3f(0.569, 0.58, 0.58);
     glBegin(GL_QUADS);
     glVertex2f(-183, 18);   // Q13: Top-left corner
     glVertex2f(-136, 18);    // S13: Top-right corner
@@ -493,7 +493,7 @@ void train() {
 
     // windows in second body
     // Q16 S16 T16 R16
-    glColor3f(0.439, 0.439, 0.435);
+    glColor3f(0.569, 0.58, 0.58);
     glBegin(GL_QUADS);
     glVertex2f(-102, 18);   // Q16: Top-left corner
     glVertex2f(-66, 18);    // S16: Top-right corner
@@ -502,7 +502,7 @@ void train() {
     glEnd();
 
     // Q13 S13 T13 R13
-    glColor3f(0.439, 0.439, 0.435);
+    glColor3f(0.569, 0.58, 0.58);
     glBegin(GL_QUADS);
     glVertex2f(-37, 18);   // Q13: Top-left corner
     glVertex2f(-1, 18);    // S13: Top-right corner
@@ -511,7 +511,7 @@ void train() {
     glEnd();
 
     // Q15 S15 T15 R15
-    glColor3f(0.439, 0.439, 0.435);
+    glColor3f(0.569, 0.58, 0.58);
     glBegin(GL_QUADS);
     glVertex2f(2, 18);   // Q15: Top-left corner
     glVertex2f(38, 18);    // S15: Top-right corner
@@ -520,7 +520,7 @@ void train() {
     glEnd();
 
     // A14 C14 D14 B14
-    glColor3f(0.439, 0.439, 0.435);
+    glColor3f(0.569, 0.58, 0.58);
     glBegin(GL_QUADS);
     glVertex2f(41, 18);   // A14: Top-left corner
     glVertex2f(65, 18);    // C14: Top-right corner
@@ -530,9 +530,33 @@ void train() {
 
 
 
+    // design quads
+    // E14 F14 G13 E13
+    glColor3f(0.788, 0.09, 0.09);
+    glBegin(GL_QUADS);
+    glVertex2f(-229, -40);   // E14: Top-left corner
+    glVertex2f(-107, -40);    // F14: Top-right corner
+    glVertex2f(-107, -58);    // G13: Bottom-right corner
+    glVertex2f(-217, -58);   // E13: Bottom-left corner
+    glEnd();
+
+    // polygon for 2nd body
+    // G14 H14 L13 K13 I13
+    glColor3f(0.788, 0.09, 0.09);
+    glBegin(GL_POLYGON);
+    glVertex2f(-104, -40);   // G14: Top-left corner
+    glVertex2f(70, -40);    // H14: Top-right corner
+    glVertex2f(70, -44);    // L13:
+    glVertex2f(58, -58);   // K13: Bottom-left corner
+    glVertex2f(-104, -58);   // I13: Bottom-left corner
+    glEnd();
+
 
     // doors
     // first body door
+
+
+
 
 
 
