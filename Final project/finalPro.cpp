@@ -8,6 +8,7 @@ float boatX = 0.0f;  // controls boat's horizontal position
 float fishX = 0.0f;  // fish group position controller
 int fishColorIndex = 0; // tracks current color (0, 1, or 2)
 float cloudX = 0.0f;  // controls cloud offset position
+float trainX = 0.0f;  //  controls train position
 
 // prototype
 void circle();
@@ -35,7 +36,7 @@ void train();
 
 
 void update(int value) {
-    boatX -= 0.8;  // Move left 
+    boatX -= 0.7;  // Move left 
 
     // Reset position when boat goes too far left
     if (boatX < -250) {
@@ -59,6 +60,14 @@ void update(int value) {
     // Reset when offset exceeds cloud width
     if (cloudX < -500) {
         cloudX = 0;
+    }
+
+    //  Train movement
+    trainX -= 1;
+
+    // Reset train when it goes off screen
+    if (trainX < -400) {
+        trainX = 550;
     }
 
 
@@ -435,6 +444,8 @@ void railway() {
 }
 
 void train() {
+    glPushMatrix();
+    glTranslatef(trainX, 0.0f, 0.0f);
     // wheels
     // first body
     circle(40, 42, 45, 10, -195, -59);
@@ -605,7 +616,7 @@ void train() {
 
 
 
-
+    glPopMatrix();
 
 
 
