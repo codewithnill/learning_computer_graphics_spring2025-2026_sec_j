@@ -22,6 +22,7 @@ void carA();
 void boat();
 void grass();
 void railway();
+void train();
 
 
 
@@ -114,6 +115,7 @@ void display() {
     buildings();
     grass();
     railway();
+    train();
     water();
     fishes();
     streets();
@@ -432,6 +434,29 @@ void railway() {
     glEnd();
 }
 
+void train() {
+    // first body
+    glColor3f(0.85, 0.85, 0.88);
+    glBegin(GL_POLYGON);
+    glVertex2f(-211, 22); // C13: top left 
+    glVertex2f(-107, 22); // F13: top right
+    glVertex2f(-107, -58); // G13: bottom right
+    glVertex2f(-217, -58); // E13: bottom left
+    glVertex2f(-235, -29); // D13: left sharp point
+    glEnd();
+
+    // second body
+    glColor3f(0.85, 0.85, 0.88);
+    glBegin(GL_POLYGON);
+    glVertex2f(-104, 22); // H13: top left 
+    glVertex2f(70, 22); // J13: top right
+    glVertex2f(70, -44); // L13: bottom right
+    glVertex2f(58, -58); // K13: 
+    glVertex2f(-104, -58); // I13: bottom left
+    glEnd();
+
+}
+
 
 
 void streets() {
@@ -475,20 +500,7 @@ void streets() {
 
 
 // void carA() {
-//     // body
-//     glColor3f(1, 0.773, 0); //orange
-//     glBegin(GL_POLYGON);
-//     glVertex2f(96, -143); // C13
-//     glVertex2f(98, -127); // D13
-//     glVertex2f(115, -125); // E13
-//     glVertex2f(125, -109); // F13
-//     glVertex2f(146, -109); // G13
-//     glVertex2f(150, -124); // H13
-//     glVertex2f(161, -124); // I13
-//     glVertex2f(170, -124); // L13
-//     glVertex2f(172, -127); // M13
-//     glVertex2f(170, -144); // N13
-//     glEnd();
+
 // }
 
 
