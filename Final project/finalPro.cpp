@@ -437,15 +437,15 @@ void railway() {
 void train() {
     // wheels
     // first body
-    circle(40, 42, 45, 10, -195, -58);
-    circle(40, 42, 45, 10, -170, -58);
+    circle(40, 42, 45, 10, -195, -59);
+    circle(40, 42, 45, 10, -170, -59);
 
     // second body
-    circle(40, 42, 45, 10, -80, -58);
-    circle(40, 42, 45, 10, -55, -58);
+    circle(40, 42, 45, 10, -80, -59);
+    circle(40, 42, 45, 10, -55, -59);
 
-    circle(40, 42, 45, 10, -80 + 90, -58);
-    circle(40, 42, 45, 10, -55 + 90, -58);
+    circle(40, 42, 45, 10, -80 + 90, -59);
+    circle(40, 42, 45, 10, -55 + 90, -59);
 
 
 
@@ -453,7 +453,7 @@ void train() {
 
 
     // first body
-    glColor3f(0, 0.176, 0.349);
+    glColor3f(0, 0.125, 0.251);
     glBegin(GL_POLYGON);
     glVertex2f(-211, 22); // C13: top left 
     glVertex2f(-107, 22); // F13: top right
@@ -463,7 +463,7 @@ void train() {
     glEnd();
 
     // second body
-    glColor3f(0, 0.176, 0.349);
+    glColor3f(0, 0.125, 0.251);
     glBegin(GL_POLYGON);
     glVertex2f(-104, 22); // H13: top left 
     glVertex2f(70, 22); // J13: top right
@@ -532,7 +532,7 @@ void train() {
 
     // design quads
     // E14 F14 G13 E13
-    glColor3f(0.788, 0.09, 0.09);
+    glColor3f(0.69, 0, 0);
     glBegin(GL_QUADS);
     glVertex2f(-229, -40);   // E14: Top-left corner
     glVertex2f(-107, -40);    // F14: Top-right corner
@@ -542,7 +542,7 @@ void train() {
 
     // polygon for 2nd body
     // G14 H14 L13 K13 I13
-    glColor3f(0.788, 0.09, 0.09);
+    glColor3f(0.69, 0, 0);
     glBegin(GL_POLYGON);
     glVertex2f(-104, -40);   // G14: Top-left corner
     glVertex2f(70, -40);    // H14: Top-right corner
