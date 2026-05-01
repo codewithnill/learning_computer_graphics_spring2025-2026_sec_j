@@ -439,6 +439,19 @@ void train() {
     // first body
     circle(40, 42, 45, 10, -195, -58);
     circle(40, 42, 45, 10, -170, -58);
+
+    // second body
+    circle(40, 42, 45, 10, -80, -58);
+    circle(40, 42, 45, 10, -55, -58);
+
+    circle(40, 42, 45, 10, -80 + 90, -58);
+    circle(40, 42, 45, 10, -55 + 90, -58);
+
+
+
+
+
+
     // first body
     glColor3f(0.85, 0.85, 0.88);
     glBegin(GL_POLYGON);
