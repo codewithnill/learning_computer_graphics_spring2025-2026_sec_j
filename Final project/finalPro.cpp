@@ -554,6 +554,19 @@ void train() {
 
     // doors
     // first body door
+    glLineWidth(1);  // Thick line
+    glColor3f(0.29, 0.29, 0.29);  // Bright yellow color
+
+    //U14 V14 W14 Z14
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-134, 18); // U14: Top-left corner
+    glVertex2f(-109, 18); // V14: Top-left corner
+    glVertex2f(-109, -50); // W14: Top-left corner
+    glVertex2f(-134, -50); // Z14: Top-left corner
+    glEnd();
+
+
+
 
 
 
