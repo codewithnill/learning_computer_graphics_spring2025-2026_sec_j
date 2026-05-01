@@ -435,6 +435,10 @@ void railway() {
 }
 
 void train() {
+    // wheels
+    // first body
+    circle(40, 42, 45, 10, -195, -58);
+    circle(40, 42, 45, 10, -170, -58);
     // first body
     glColor3f(0.85, 0.85, 0.88);
     glBegin(GL_POLYGON);
@@ -510,6 +514,13 @@ void train() {
     glVertex2f(65, -10);    // D14: Bottom-right corner
     glVertex2f(41, -10);   // B14: Bottom-left corner
     glEnd();
+
+
+
+
+    // doors
+    // first body door
+
 
 
 }
