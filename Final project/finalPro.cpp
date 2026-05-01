@@ -455,6 +455,63 @@ void train() {
     glVertex2f(-104, -58); // I13: bottom left
     glEnd();
 
+    // windows in first body
+    // M13 P13 O13 N13
+    glColor3f(0.439, 0.439, 0.435);
+    glBegin(GL_QUADS);
+    glVertex2f(-209, 18);   // M13: Top-left corner
+    glVertex2f(-185, 18);    // P13: Top-right corner
+    glVertex2f(-185, -10);    // O13: Bottom-right corner
+    glVertex2f(-222, -10);   // N13: Bottom-left corner
+    glEnd();
+
+    // Q13 S13 T13 R13
+    glColor3f(0.439, 0.439, 0.435);
+    glBegin(GL_QUADS);
+    glVertex2f(-183, 18);   // Q13: Top-left corner
+    glVertex2f(-136, 18);    // S13: Top-right corner
+    glVertex2f(-136, -10);    // T13: Bottom-right corner
+    glVertex2f(-183, -10);   // R13: Bottom-left corner
+    glEnd();
+
+    // windows in second body
+    // Q16 S16 T16 R16
+    glColor3f(0.439, 0.439, 0.435);
+    glBegin(GL_QUADS);
+    glVertex2f(-102, 18);   // Q16: Top-left corner
+    glVertex2f(-66, 18);    // S16: Top-right corner
+    glVertex2f(-66, -10);    // T16: Bottom-right corner
+    glVertex2f(-102, -10);   // R16: Bottom-left corner
+    glEnd();
+
+    // Q13 S13 T13 R13
+    glColor3f(0.439, 0.439, 0.435);
+    glBegin(GL_QUADS);
+    glVertex2f(-37, 18);   // Q13: Top-left corner
+    glVertex2f(-1, 18);    // S13: Top-right corner
+    glVertex2f(-1, -10);    // T13: Bottom-right corner
+    glVertex2f(-37, -10);   // R13: Bottom-left corner
+    glEnd();
+
+    // Q15 S15 T15 R15
+    glColor3f(0.439, 0.439, 0.435);
+    glBegin(GL_QUADS);
+    glVertex2f(2, 18);   // Q15: Top-left corner
+    glVertex2f(38, 18);    // S15: Top-right corner
+    glVertex2f(38, -10);    // T15: Bottom-right corner
+    glVertex2f(2, -10);   // R15: Bottom-left corner
+    glEnd();
+
+    // A14 C14 D14 B14
+    glColor3f(0.439, 0.439, 0.435);
+    glBegin(GL_QUADS);
+    glVertex2f(41, 18);   // A14: Top-left corner
+    glVertex2f(65, 18);    // C14: Top-right corner
+    glVertex2f(65, -10);    // D14: Bottom-right corner
+    glVertex2f(41, -10);   // B14: Bottom-left corner
+    glEnd();
+
+
 }
 
 
