@@ -612,6 +612,18 @@ void train() {
     glEnd();
 
 
+    // connecting object
+    // A15 B15 D15 C15 
+    glColor3f(0.2, 0.2, 0.2);
+    glBegin(GL_QUADS);
+    glVertex2f(-107, 0);   // A15: Top-left corner
+    glVertex2f(-104, 0);    // B15: Top-right corner
+    glVertex2f(-104, -36);    // D15: Bottom-right corner
+    glVertex2f(-107, -36);   // C15: Bottom-left corner
+    glEnd();
+
+
+
 
 
 
