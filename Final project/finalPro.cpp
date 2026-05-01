@@ -554,7 +554,7 @@ void train() {
 
     // doors
     // first body door
-    glLineWidth(1);
+    glLineWidth(2);
     glColor3f(0.29, 0.29, 0.29);
 
     //U14 V14 W14 Z14
@@ -566,7 +566,7 @@ void train() {
     glEnd();
 
     // first body door
-    glLineWidth(1);
+    glLineWidth(2);
     glColor3f(0.29, 0.29, 0.29);
 
     //U13 V13 W13 Z13
@@ -576,6 +576,30 @@ void train() {
     glVertex2f(-39, -50); // W13: Top-left corner
     glVertex2f(-64, -50); // Z13: Top-left corner
     glEnd();
+
+
+
+    // door windows
+    // window in first body
+    // I14 J14 L14 K14
+    glColor3f(0.569, 0.58, 0.58);
+    glBegin(GL_QUADS);
+    glVertex2f(-131, 13);   // I14: Top-left corner
+    glVertex2f(-112, 13);    // J14: Top-right corner
+    glVertex2f(-112, -10);    // L14: Bottom-right corner
+    glVertex2f(-131, -10);   // K14: Bottom-left corner
+    glEnd();
+
+    // window in second body
+    // M14 N14 P14 O14 
+    glColor3f(0.569, 0.58, 0.58);
+    glBegin(GL_QUADS);
+    glVertex2f(-61, 13);   // M14: Top-left corner
+    glVertex2f(-42, 13);    // N14: Top-right corner
+    glVertex2f(-42, -10);    // P14: Bottom-right corner
+    glVertex2f(-61, -10);   // O14: Bottom-left corner
+    glEnd();
+
 
 
 
