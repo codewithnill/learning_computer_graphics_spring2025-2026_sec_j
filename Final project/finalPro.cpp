@@ -9,6 +9,8 @@ float fishX = 0.0f;  // fish group position controller
 int fishColorIndex = 0; // tracks current color (0, 1, or 2)
 float cloudX = 0.0f;  // controls cloud offset position
 float trainX = 0.0f;  //  controls train position
+float carAX = 0.0f;   // controls car A position
+float carBX = 0.0f;   //  ontrols car B position
 
 // prototype
 void circle();
@@ -20,7 +22,7 @@ void buildings();
 void fishes();
 void streets();
 void carA(); // first in below street 
-void carB(); // second in below street 
+void carB(); // second in below street, slower than car A
 void boat();
 void grass();
 void railway();
@@ -69,6 +71,22 @@ void update(int value) {
     // Reset train when it goes off screen
     if (trainX < -400) {
         trainX = 550;
+    }
+
+    // Car A movement 
+    carAX -= 1.2;
+
+    // Reset car A when it goes off screen
+    if (carAX < -500) {
+        carAX = 400;
+    }
+
+    // Car B movement 
+    carBX -= 1.2;
+
+    // Reset car B when it goes off screen
+    if (carBX < -500) {
+        carBX = 400;
     }
 
 
@@ -681,6 +699,8 @@ void streets() {
 
 
 void carA() {
+    glPushMatrix();
+    glTranslatef(carAX, 0.0f, 0.0f);
     // body
     // E15 F15 G15 I15 J15 K15 L15 M15
     glColor3f(1, 0.486, 0); // orange
@@ -732,9 +752,13 @@ void carA() {
     glVertex2f(200, -85);    // F16
     glVertex2f(200, -100);   // L16
     glEnd();
+
+    glPopMatrix();
 }
 
 void carB() {
+    glPushMatrix();
+    glTranslatef(carBX, 0.0f, 0.0f);
     // body
     // H16 G16 I16 J16 K16 L16 M16 N16
     glColor3f(0.345, 0.706, 0.741); // orange
@@ -777,6 +801,8 @@ void carB() {
     glVertex2f(-61, -73);    // C17
     glVertex2f(-61, -92);   // D17
     glEnd();
+
+    glPopMatrix();
 }
 
 
