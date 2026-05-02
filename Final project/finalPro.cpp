@@ -740,7 +740,7 @@ void carA() {
 void carB() {
     // body
     // H16 G16 I16 J16 K16 L16 M16 N16
-    glColor3f(1, 0.486, 0); // orange
+    glColor3f(0.922, 0.02, 0.161); // orange
     glBegin(GL_POLYGON);
     glVertex2f(-144, -133);  // H16
     glVertex2f(-147, -100);   // G16
@@ -751,6 +751,14 @@ void carB() {
     glVertex2f(-12, -96);  // M16
     glVertex2f(-12, -133);  // N16
     glEnd();
+
+    // tyre
+    circle(10, 12, 14, 13, -125, -131); // front
+    circle(10, 12, 14, 13, -35, -131); // back
+
+    // rims
+    circle(160, 162, 165, 7, -125, -131); // front rim
+    circle(160, 162, 165, 7, -35, -131); // rear rim
 }
 
 
