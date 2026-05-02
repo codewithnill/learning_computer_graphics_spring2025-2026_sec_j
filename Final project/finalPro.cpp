@@ -20,6 +20,7 @@ void buildings();
 void fishes();
 void streets();
 void carA(); // first in below street 
+void carB(); // second in below street 
 void boat();
 void grass();
 void railway();
@@ -129,6 +130,7 @@ void display() {
     fishes();
     streets();
     carA();
+    carB(); // slower than A
     boat();
 
 
@@ -733,11 +735,22 @@ void carA() {
     glVertex2f(200, -85);    // F16
     glVertex2f(200, -100);   // L16
     glEnd();
+}
 
-
-
-
-
+void carB() {
+    // body
+    // H16 G16 I16 J16 K16 L16 M16 N16
+    glColor3f(1, 0.486, 0); // orange
+    glBegin(GL_POLYGON);
+    glVertex2f(-144, -133);  // H16
+    glVertex2f(-147, -100);   // G16
+    glVertex2f(-112, -95);   // I16
+    glVertex2f(-93, -65);  // J16
+    glVertex2f(-56, -66);  // K16
+    glVertex2f(-56, -95);  // L16
+    glVertex2f(-12, -96);  // M16
+    glVertex2f(-12, -133);  // N16
+    glEnd();
 }
 
 
