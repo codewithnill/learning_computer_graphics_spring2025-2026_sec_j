@@ -19,7 +19,7 @@ void sun();
 void buildings();
 void fishes();
 void streets();
-void carA();
+void carA(); // first in below street 
 void boat();
 void grass();
 void railway();
@@ -128,7 +128,7 @@ void display() {
     water();
     fishes();
     streets();
-    //carA();
+    carA();
     boat();
 
 
@@ -678,9 +678,24 @@ void streets() {
 
 
 
-// void carA() {
+void carA() {
+    // body
+    // E15 F15 G15 I15 J15 K15 L15 M15
+    glColor3f(1, 0.486, 0); // orange
+    glBegin(GL_POLYGON);
+    glVertex2f(88, -133);  // E15
+    glVertex2f(89, -103);   // F15
+    glVertex2f(116, -98);   // G15
+    glVertex2f(135, -71);  // I15
+    glVertex2f(164, -75);  // J15
+    glVertex2f(171, -98);  // K15
+    glVertex2f(200, -100);  // L15
+    glVertex2f(202, -132);  // M15
+    glEnd();
 
-// }
+
+
+}
 
 
 
