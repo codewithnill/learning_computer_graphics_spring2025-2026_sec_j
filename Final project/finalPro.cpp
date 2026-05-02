@@ -681,9 +681,6 @@ void streets() {
 
 
 void carA() {
-
-
-
     // body
     // E15 F15 G15 I15 J15 K15 L15 M15
     glColor3f(1, 0.486, 0); // orange
@@ -740,13 +737,13 @@ void carA() {
 void carB() {
     // body
     // H16 G16 I16 J16 K16 L16 M16 N16
-    glColor3f(0.922, 0.02, 0.161); // orange
+    glColor3f(0.345, 0.706, 0.741); // orange
     glBegin(GL_POLYGON);
     glVertex2f(-147, -133);  // H16
     glVertex2f(-145, -100);   // G16
     glVertex2f(-112, -93);   // I16
     glVertex2f(-93, -65);  // J16
-    glVertex2f(-56, -66);  // K16
+    glVertex2f(-56, -65);  // K16
     glVertex2f(-56, -95);  // L16
     glVertex2f(-12, -96);  // M16
     glVertex2f(-12, -133);  // N16
@@ -765,11 +762,20 @@ void carB() {
     glColor3f(0.29, 0.29, 0.29);
     glBegin(GL_LINE_LOOP);
     glVertex2f(-107, -128); // U16
-    glVertex2f(-108, -92); // P16
+    glVertex2f(-109, -92); // P16
     glVertex2f(-92, -69); // O16
-    glVertex2f(-59, -70); // V16
-    glVertex2f(-59, -94); // W16
+    glVertex2f(-58, -70); // V16
+    glVertex2f(-58, -94); // W16
     glVertex2f(-66, -128); // Z16
+    glEnd();
+
+    // door window
+    glColor3f(0.271, 0.271, 0.271);
+    glBegin(GL_QUADS);
+    glVertex2f(-105, -92);   // A17
+    glVertex2f(-92, -73);    // B17
+    glVertex2f(-61, -73);    // C17
+    glVertex2f(-61, -92);   // D17
     glEnd();
 }
 
