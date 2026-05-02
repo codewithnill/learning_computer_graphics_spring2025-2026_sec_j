@@ -698,12 +698,32 @@ void carA() {
     glColor3f(0.29, 0.29, 0.29);
     glBegin(GL_LINE_LOOP);
     glVertex2f(120, -129); // V15
-    glVertex2f(120, -100); // O15
+    glVertex2f(119, -99); // O15
     glVertex2f(136, -75); // N15
     glVertex2f(162, -79); // P15
     glVertex2f(165, -99); // W15
     glVertex2f(162, -129); // U15
     glEnd();
+
+    // door window
+    glColor3f(0.271, 0.271, 0.271);
+    glBegin(GL_QUADS);
+    glVertex2f(123, -98);   // Z15
+    glVertex2f(136, -78);    // A16
+    glVertex2f(160, -82);    // B16
+    glVertex2f(163, -99);   // C16
+    glEnd();
+
+    // back
+    glColor3f(1, 0.486, 0);
+    glBegin(GL_QUADS);
+    glVertex2f(189, -99);   // D16
+    glVertex2f(193, -85);    // E16
+    glVertex2f(200, -85);    // F16
+    glVertex2f(200, -100);   // L16
+    glEnd();
+
+
 
 
 
