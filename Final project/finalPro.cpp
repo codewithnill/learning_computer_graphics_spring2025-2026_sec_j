@@ -742,9 +742,9 @@ void carB() {
     // H16 G16 I16 J16 K16 L16 M16 N16
     glColor3f(0.922, 0.02, 0.161); // orange
     glBegin(GL_POLYGON);
-    glVertex2f(-144, -133);  // H16
-    glVertex2f(-147, -100);   // G16
-    glVertex2f(-112, -95);   // I16
+    glVertex2f(-147, -133);  // H16
+    glVertex2f(-145, -100);   // G16
+    glVertex2f(-112, -93);   // I16
     glVertex2f(-93, -65);  // J16
     glVertex2f(-56, -66);  // K16
     glVertex2f(-56, -95);  // L16
@@ -759,6 +759,18 @@ void carB() {
     // rims
     circle(160, 162, 165, 7, -125, -131); // front rim
     circle(160, 162, 165, 7, -35, -131); // rear rim
+
+    // door
+    glLineWidth(1);
+    glColor3f(0.29, 0.29, 0.29);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-107, -128); // U16
+    glVertex2f(-108, -92); // P16
+    glVertex2f(-92, -69); // O16
+    glVertex2f(-59, -70); // V16
+    glVertex2f(-59, -94); // W16
+    glVertex2f(-66, -128); // Z16
+    glEnd();
 }
 
 
