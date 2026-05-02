@@ -693,6 +693,18 @@ void carA() {
     glVertex2f(202, -132);  // M15
     glEnd();
 
+    // door
+    glLineWidth(1);
+    glColor3f(0.29, 0.29, 0.29);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(120, -129); // V15
+    glVertex2f(120, -100); // O15
+    glVertex2f(136, -75); // N15
+    glVertex2f(162, -79); // P15
+    glVertex2f(165, -99); // W15
+    glVertex2f(162, -129); // U15
+    glEnd();
+
 
 
 }
