@@ -700,6 +700,10 @@ void carA() {
     circle(10, 12, 14, 13, 105, -131); // front
     circle(10, 12, 14, 13, 180, -131); // back
 
+    // rims
+    circle(160, 162, 165, 7, 105, -131); // front rim
+    circle(160, 162, 165, 7, 180, -131); // rear rim
+
     // door
     glLineWidth(1);
     glColor3f(0.29, 0.29, 0.29);
