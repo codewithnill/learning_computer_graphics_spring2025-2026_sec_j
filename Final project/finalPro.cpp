@@ -679,6 +679,9 @@ void streets() {
 
 
 void carA() {
+
+
+
     // body
     // E15 F15 G15 I15 J15 K15 L15 M15
     glColor3f(1, 0.486, 0); // orange
@@ -692,6 +695,10 @@ void carA() {
     glVertex2f(200, -100);  // L15
     glVertex2f(202, -132);  // M15
     glEnd();
+
+    // tyre
+    circle(10, 12, 14, 13, 105, -131); // front
+    circle(10, 12, 14, 13, 180, -131); // back
 
     // door
     glLineWidth(1);
