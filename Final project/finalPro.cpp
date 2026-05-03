@@ -559,14 +559,24 @@ void cloudset() {
     glPopMatrix();
 }
 
-void sun() {
+void sun() { // -> changes to moon when N or n is pressed to bring night mode
+
     //glPushMatrix();
     //glTranslatef(x, y, 0);
     //glRotatef(angle1, 0, 0, 1);
     //circle(255, 255, 200, 20, 180, 200);  // Outer glow
-    circle(255, 220, 140, 17, -200, 210);   // Main sun
+    //circle(255, 220, 140, 17, -200, 210);   // Main sun
     //circle(255, 200, 0, 8, 180, 200);     // Inner core
     //glPopMatrix();
+
+    if (isNight) {
+        // Moon (bluish-white)
+        circle(206, 220, 255, 22, -200, 210);  // Pale bluish-white moon
+    }
+    else {
+        // Sun (orange-yellow)
+        circle(255, 220, 140, 22, -200, 210);  // Main sun
+    }
 }
 
 
