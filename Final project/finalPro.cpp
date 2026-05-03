@@ -12,6 +12,7 @@ float trainX = 0.0f;  //  controls train position
 float carAX = 0.0f;   // controls car A position
 float carBX = 0.0f;   //  ontrols car B position
 float cloudDirection = -1.0f;  // -1 = left, 1 = right
+bool isNight = false;
 
 // prototype
 void circle();
@@ -115,6 +116,17 @@ void keyboard(unsigned char key, int x, int y) {
         cloudDirection *= -1;  // Flip direction
         glutPostRedisplay();
         break;
+
+    case 'n':
+    case 'N':
+        isNight = true;
+        glutPostRedisplay();
+        break;
+    case 'd':
+    case 'D':
+        isNight = false;
+        glutPostRedisplay();
+        break;
     }
 }
 
@@ -190,7 +202,13 @@ void display() {
 
 
 void sky() {
-    glColor3f(0.529, 0.808, 0.922);  // Light blue color
+    //glColor3f(0.529, 0.808, 0.922);  // Light blue color
+    if (isNight) {
+        glColor3f(0.05, 0.05, 0.15);  // Deep blue/night sky
+    }
+    else {
+        glColor3f(0.529, 0.808, 0.922);  // Light blue day sky
+    }
     glBegin(GL_QUADS);     // rectangle (quadrilateral)
     glVertex2f(250, 250);  // Top-right corner (highest possible)
     glVertex2f(-250, 250); // Top-left corner (highest possible)
