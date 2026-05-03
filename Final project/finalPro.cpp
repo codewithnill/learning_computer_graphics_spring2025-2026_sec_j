@@ -12,7 +12,9 @@ float trainX = 0.0f;  //  controls train position
 float carAX = 0.0f;   // controls car A position
 float carBX = 0.0f;   //  ontrols car B position
 float cloudDirection = -1.0f;  // -1 = left, 1 = right
+
 bool isNight = false;
+bool vehiclesMoving = true;
 
 // prototype
 void circle();
@@ -41,11 +43,39 @@ void train();
 
 
 void update(int value) {
-    boatX -= 0.7;  // Move left 
 
-    // Reset position when boat goes too far left
-    if (boatX < -250) {
-        boatX = 250 + 200;  // Reset to right side
+    if (!isNight) { // Only move vehicles if not in night mode
+
+        boatX -= 0.7;  // Move left 
+
+        // Reset position when boat goes too far left
+        if (boatX < -250) {
+            boatX = 250 + 200;  // Reset to right side
+        }
+
+        //  Train movement
+        trainX -= 1;
+
+        // Reset train when it goes off screen
+        if (trainX < -400) {
+            trainX = 550;
+        }
+
+        // Car A movement 
+        carAX -= 1.2;
+
+        // Reset car A when it goes off screen
+        if (carAX < -500) {
+            carAX = 400;
+        }
+
+        // Car B movement 
+        carBX -= 1.2;
+
+        // Reset car B when it goes off screen
+        if (carBX < -500) {
+            carBX = 400;
+        }
     }
 
 
@@ -77,29 +107,7 @@ void update(int value) {
         cloudX = 0;
     }
 
-    //  Train movement
-    trainX -= 1;
 
-    // Reset train when it goes off screen
-    if (trainX < -400) {
-        trainX = 550;
-    }
-
-    // Car A movement 
-    carAX -= 1.2;
-
-    // Reset car A when it goes off screen
-    if (carAX < -500) {
-        carAX = 400;
-    }
-
-    // Car B movement 
-    carBX -= 1.2;
-
-    // Reset car B when it goes off screen
-    if (carBX < -500) {
-        carBX = 400;
-    }
 
 
 
@@ -120,11 +128,13 @@ void keyboard(unsigned char key, int x, int y) {
     case 'n':
     case 'N':
         isNight = true;
+        vehiclesMoving = false;
         glutPostRedisplay();
         break;
     case 'd':
     case 'D':
         isNight = false;
+        vehiclesMoving = true;
         glutPostRedisplay();
         break;
     }
