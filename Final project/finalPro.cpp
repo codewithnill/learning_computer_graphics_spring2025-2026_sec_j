@@ -143,14 +143,14 @@ void circle(float r, float g, float b, float radius, float xc, float yc)
 
 
 void display() {
-    glClearColor(1, 1, 1, 1); // Set background color to white and opaque
+    glClearColor(1, 1, 1, 1); // set background color to white and opaque
     glClear(GL_COLOR_BUFFER_BIT); // Clear the color buffer (background) (fills the screen with this color)
 
-    // Set up projection matrix
+    // set up projection matrix
     glMatrixMode(GL_PROJECTION);  // Switch to projection matrix
     glLoadIdentity();             // Reset the matrix
     gluOrtho2D(-250, 250, -250, 250);
-    // Sets up a 2D orthographic projection
+    // sets up a 2D orthographic projection
     // X-axis ranges from -250 to 250
     // Y-axis ranges from -250 to 250
 
@@ -202,8 +202,142 @@ void sky() {
 void cloudset() {
     glPushMatrix();
     glTranslatef(cloudX, 0.0f, 0.0f);
-    // 3 set: Always at least one set fully visible while others are entering/exiting
 
+    //  set -2 (far left, for rightward movement) 
+    // A-2
+    circle(248, 250, 252, 5, -200 - 1000, 205);
+    circle(248, 250, 252, 8, -210 - 1000, 210);
+    circle(248, 250, 252, 9, -198 - 1000, 217);
+    circle(248, 250, 252, 8, -185 - 1000, 221);
+    circle(248, 250, 252, 8, -190 - 1000, 208);
+    circle(248, 250, 252, 8, -180 - 1000, 208);
+    circle(248, 250, 252, 8, -170 - 1000, 205);
+    circle(248, 250, 252, 8, -173 - 1000, 218);
+    circle(248, 250, 252, 8, -163 - 1000, 212);
+
+    // B-2
+    circle(248, 250, 252, 5, -120 - 1000, 198);
+    circle(248, 250, 252, 8, -130 - 1000, 203);
+    circle(248, 250, 252, 9, -118 - 1000, 210);
+    circle(248, 250, 252, 8, -105 - 1000, 214);
+    circle(248, 250, 252, 8, -110 - 1000, 201);
+    circle(248, 250, 252, 8, -100 - 1000, 201);
+    circle(248, 250, 252, 8, -90 - 1000, 198);
+    circle(248, 250, 252, 8, -93 - 1000, 211);
+    circle(248, 250, 252, 8, -83 - 1000, 205);
+
+    // C-2
+    circle(248, 250, 252, 6, -40 - 1000, 190);
+    circle(248, 250, 252, 9, -52 - 1000, 195);
+    circle(248, 250, 252, 10, -38 - 1000, 203);
+    circle(248, 250, 252, 9, -22 - 1000, 207);
+    circle(248, 250, 252, 8, -28 - 1000, 195);
+    circle(248, 250, 252, 8, -15 - 1000, 195);
+    circle(248, 250, 252, 8, -5 - 1000, 193);
+    circle(248, 250, 252, 8, -10 - 1000, 205);
+    circle(248, 250, 252, 8, 2 - 1000, 200);
+
+    // D-2
+    circle(248, 250, 252, 5, 60 - 1000, 192);
+    circle(248, 250, 252, 8, 50 - 1000, 197);
+    circle(248, 250, 252, 9, 62 - 1000, 205);
+    circle(248, 250, 252, 8, 75 - 1000, 209);
+    circle(248, 250, 252, 8, 70 - 1000, 196);
+    circle(248, 250, 252, 8, 80 - 1000, 196);
+    circle(248, 250, 252, 8, 90 - 1000, 193);
+    circle(248, 250, 252, 8, 87 - 1000, 206);
+    circle(248, 250, 252, 8, 97 - 1000, 200);
+
+    // E-2
+    circle(248, 250, 252, 5, 130 - 1000, 178);
+    circle(248, 250, 252, 8, 122 - 1000, 183);
+    circle(248, 250, 252, 9, 132 - 1000, 189);
+    circle(248, 250, 252, 8, 148 - 1000, 195);
+    circle(248, 250, 252, 8, 142 - 1000, 182);
+    circle(248, 250, 252, 8, 155 - 1000, 182);
+    circle(248, 250, 252, 8, 165 - 1000, 180);
+    circle(248, 250, 252, 8, 160 - 1000, 192);
+    circle(248, 250, 252, 8, 172 - 1000, 187);
+
+    // F-2
+    circle(248, 250, 252, 4, 235 - 1000, 190);
+    circle(248, 250, 252, 6, 230 - 1000, 194);
+    circle(248, 250, 252, 7, 237 - 1000, 200);
+    circle(248, 250, 252, 6, 247 - 1000, 202);
+    circle(248, 250, 252, 6, 243 - 1000, 192);
+    circle(248, 250, 252, 6, 250 - 1000, 193);
+    circle(248, 250, 252, 5, 255 - 1000, 190);
+    circle(248, 250, 252, 5, 252 - 1000, 199);
+    circle(248, 250, 252, 5, 257 - 1000, 193);
+
+    //  set -1 (left, for rightward movement) 
+    // A-1
+    circle(248, 250, 252, 5, -200 - 500, 205);
+    circle(248, 250, 252, 8, -210 - 500, 210);
+    circle(248, 250, 252, 9, -198 - 500, 217);
+    circle(248, 250, 252, 8, -185 - 500, 221);
+    circle(248, 250, 252, 8, -190 - 500, 208);
+    circle(248, 250, 252, 8, -180 - 500, 208);
+    circle(248, 250, 252, 8, -170 - 500, 205);
+    circle(248, 250, 252, 8, -173 - 500, 218);
+    circle(248, 250, 252, 8, -163 - 500, 212);
+
+    // B-1
+    circle(248, 250, 252, 5, -120 - 500, 198);
+    circle(248, 250, 252, 8, -130 - 500, 203);
+    circle(248, 250, 252, 9, -118 - 500, 210);
+    circle(248, 250, 252, 8, -105 - 500, 214);
+    circle(248, 250, 252, 8, -110 - 500, 201);
+    circle(248, 250, 252, 8, -100 - 500, 201);
+    circle(248, 250, 252, 8, -90 - 500, 198);
+    circle(248, 250, 252, 8, -93 - 500, 211);
+    circle(248, 250, 252, 8, -83 - 500, 205);
+
+    // C-1
+    circle(248, 250, 252, 6, -40 - 500, 190);
+    circle(248, 250, 252, 9, -52 - 500, 195);
+    circle(248, 250, 252, 10, -38 - 500, 203);
+    circle(248, 250, 252, 9, -22 - 500, 207);
+    circle(248, 250, 252, 8, -28 - 500, 195);
+    circle(248, 250, 252, 8, -15 - 500, 195);
+    circle(248, 250, 252, 8, -5 - 500, 193);
+    circle(248, 250, 252, 8, -10 - 500, 205);
+    circle(248, 250, 252, 8, 2 - 500, 200);
+
+    // D-1
+    circle(248, 250, 252, 5, 60 - 500, 192);
+    circle(248, 250, 252, 8, 50 - 500, 197);
+    circle(248, 250, 252, 9, 62 - 500, 205);
+    circle(248, 250, 252, 8, 75 - 500, 209);
+    circle(248, 250, 252, 8, 70 - 500, 196);
+    circle(248, 250, 252, 8, 80 - 500, 196);
+    circle(248, 250, 252, 8, 90 - 500, 193);
+    circle(248, 250, 252, 8, 87 - 500, 206);
+    circle(248, 250, 252, 8, 97 - 500, 200);
+
+    // E-1
+    circle(248, 250, 252, 5, 130 - 500, 178);
+    circle(248, 250, 252, 8, 122 - 500, 183);
+    circle(248, 250, 252, 9, 132 - 500, 189);
+    circle(248, 250, 252, 8, 148 - 500, 195);
+    circle(248, 250, 252, 8, 142 - 500, 182);
+    circle(248, 250, 252, 8, 155 - 500, 182);
+    circle(248, 250, 252, 8, 165 - 500, 180);
+    circle(248, 250, 252, 8, 160 - 500, 192);
+    circle(248, 250, 252, 8, 172 - 500, 187);
+
+    // F-1
+    circle(248, 250, 252, 4, 235 - 500, 190);
+    circle(248, 250, 252, 6, 230 - 500, 194);
+    circle(248, 250, 252, 7, 237 - 500, 200);
+    circle(248, 250, 252, 6, 247 - 500, 202);
+    circle(248, 250, 252, 6, 243 - 500, 192);
+    circle(248, 250, 252, 6, 250 - 500, 193);
+    circle(248, 250, 252, 5, 255 - 500, 190);
+    circle(248, 250, 252, 5, 252 - 500, 199);
+    circle(248, 250, 252, 5, 257 - 500, 193);
+
+    // set 0 (original positions) 
     // A
     circle(248, 250, 252, 5, -200, 205);
     circle(248, 250, 252, 8, -210, 210);
@@ -225,7 +359,6 @@ void cloudset() {
     circle(248, 250, 252, 8, -90, 198);
     circle(248, 250, 252, 8, -93, 211);
     circle(248, 250, 252, 8, -83, 205);
-
 
     // C
     circle(248, 250, 252, 6, -40, 190);
@@ -249,8 +382,7 @@ void cloudset() {
     circle(248, 250, 252, 8, 87, 206);
     circle(248, 250, 252, 8, 97, 200);
 
-
-    //E
+    // E
     circle(248, 250, 252, 5, 130, 178);
     circle(248, 250, 252, 8, 122, 183);
     circle(248, 250, 252, 9, 132, 189);
@@ -261,8 +393,7 @@ void cloudset() {
     circle(248, 250, 252, 8, 160, 192);
     circle(248, 250, 252, 8, 172, 187);
 
-    //F
-
+    // F
     circle(248, 250, 252, 4, 235, 190);
     circle(248, 250, 252, 6, 230, 194);
     circle(248, 250, 252, 7, 237, 200);
@@ -273,7 +404,7 @@ void cloudset() {
     circle(248, 250, 252, 5, 252, 199);
     circle(248, 250, 252, 5, 257, 193);
 
-    // set 2 shifted right by +500 
+    // set +1 (right, for leftward movement) 
     // A2
     circle(248, 250, 252, 5, -200 + 500, 205);
     circle(248, 250, 252, 8, -210 + 500, 210);
@@ -284,7 +415,6 @@ void cloudset() {
     circle(248, 250, 252, 8, -170 + 500, 205);
     circle(248, 250, 252, 8, -173 + 500, 218);
     circle(248, 250, 252, 8, -163 + 500, 212);
-
 
     // B2
     circle(248, 250, 252, 5, -120 + 500, 198);
@@ -341,7 +471,7 @@ void cloudset() {
     circle(248, 250, 252, 5, 252 + 500, 199);
     circle(248, 250, 252, 5, 257 + 500, 193);
 
-    // set 3 shifted right by +1000
+    // set +2 (far right, for leftward movement) 
     // A3
     circle(248, 250, 252, 5, -200 + 1000, 205);
     circle(248, 250, 252, 8, -210 + 1000, 210);
@@ -1148,8 +1278,8 @@ int main(int argc, char** argv) {
     //argv = argument vector (array of command-line argument strings)
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(1200, 600); // Set the window's initial width & height
-    glutInitWindowPosition(70, 70);  // Set the window's initial position according to the monitor
+    glutInitWindowSize(1200, 600); // set the window's initial width & height
+    glutInitWindowPosition(70, 70);  // set the window's initial position according to the monitor
     glutCreateWindow("Scene"); // Create a window with the given title
     glutDisplayFunc(display); // Register display callback handler for window re-paint
 
