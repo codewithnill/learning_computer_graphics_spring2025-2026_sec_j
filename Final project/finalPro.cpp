@@ -11,6 +11,7 @@ float cloudX = 0.0f;  // controls cloud offset position
 float trainX = 0.0f;  //  controls train position
 float carAX = 0.0f;   // controls car A position
 float carBX = 0.0f;   //  ontrols car B position
+float cloudDirection = -1.0f;  // -1 = left, 1 = right
 
 // prototype
 void circle();
@@ -58,10 +59,20 @@ void update(int value) {
 
 
     // Cloud movement
-    cloudX -= 0.1;  // Move left
+    //cloudX -= 0.1;  // Move left
+
+    cloudX += cloudDirection * 0.1;  // Move based on direction
 
     // Reset when offset exceeds cloud width
+    // if (cloudX < -500) {
+    //     cloudX = 0;
+    // }
+
+    // Reset when offset exceeds cloud width (works for both directions)
     if (cloudX < -500) {
+        cloudX = 0;
+    }
+    else if (cloudX > 500) {
         cloudX = 0;
     }
 
@@ -94,6 +105,21 @@ void update(int value) {
     glutPostRedisplay();  // Redraw the scene
     glutTimerFunc(8, update, 0);  // Call again 
 }
+
+
+
+void keyboard(unsigned char key, int x, int y) {
+    switch (key) {
+    case 'c':
+    case 'C':
+        cloudDirection *= -1;  // Flip direction
+        glutPostRedisplay();
+        break;
+    }
+}
+
+
+
 
 void circle(float r, float g, float b, float radius, float xc, float yc)
 {
@@ -148,7 +174,7 @@ void display() {
     fishes();
     streets();
     carA();
-    carB(); // slower than A
+    carB();
     boat();
 
 
@@ -1128,7 +1154,7 @@ int main(int argc, char** argv) {
     glutDisplayFunc(display); // Register display callback handler for window re-paint
 
     glutTimerFunc(16, update, 0);
-
+    glutKeyboardFunc(keyboard);
     glutMainLoop(); // Enter the event-processing loop (keeps the program alive)
     return 0;
 }
@@ -1722,20 +1748,5 @@ void buildings() {
     glVertex2f(220, 40); // W12: Top right
     glVertex2f(220, 28);  // Z12: Bottom right 
     glEnd();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
