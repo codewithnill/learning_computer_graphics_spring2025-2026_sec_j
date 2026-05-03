@@ -4,6 +4,8 @@
 #include <cmath>
 
 
+
+
 float boatX = 0.0f;  // controls boat's horizontal position
 float fishX = 0.0f;  // fish group position controller
 int fishColorIndex = 0; // tracks current color (0, 1, or 2)
@@ -13,11 +15,15 @@ float carAX = 0.0f;   // controls car A position
 float carBX = 0.0f;   //  ontrols car B position
 float cloudDirection = -1.0f;  // -1 = left, 1 = right
 
+
+
 bool isNight = false;
 bool vehiclesMoving = true;
 
+
+
 // prototype
-void circle();
+void circle(float r, float g, float b, float radius, float xc, float yc);
 void water();
 void sky();
 void cloudset();
@@ -25,12 +31,17 @@ void sun();
 void buildings();
 void fishes();
 void streets();
-void carA(); // first in below street 
-void carB(); // second in below street, slower than car A
+void carA();     // first car below street
+void carB();     // second car below street
 void boat();
 void grass();
 void railway();
 void train();
+void drawWindow(float x1, float y1, float x2, float y2);
+void keyboard(unsigned char key, int x, int y);
+void update(int value);
+void display();
+void setFishColor(int colorIndex);
 
 
 
