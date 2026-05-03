@@ -11,9 +11,11 @@ float fishX = 0.0f;  // fish group position controller
 int fishColorIndex = 0; // tracks current color (0, 1, or 2)
 float cloudX = 0.0f;  // controls cloud offset position
 float trainX = 0.0f;  //  controls train position
+float trainSpeed = 1.0f; // for train speed control
 float carAX = 0.0f;   // controls car A position
 float carBX = 0.0f;   //  ontrols car B position
 float cloudDirection = -1.0f;  // -1 = left, 1 = right
+
 
 
 
@@ -65,7 +67,7 @@ void update(int value) {
         }
 
         //  Train movement
-        trainX -= 1;
+        trainX -= trainSpeed;
 
         // Reset train when it goes off screen
         if (trainX < -400) {
@@ -148,7 +150,20 @@ void keyboard(unsigned char key, int x, int y) {
         vehiclesMoving = true;
         glutPostRedisplay();
         break;
+
+    case 's':
+    case 'S':
+        if (trainSpeed == 1.0f) {
+            trainSpeed = 2.5f;  // Fast speed
+        }
+        else {
+            trainSpeed = 1.0f;  // Normal speed
+        }
+        glutPostRedisplay();
+        break;
     }
+
+
 }
 
 
