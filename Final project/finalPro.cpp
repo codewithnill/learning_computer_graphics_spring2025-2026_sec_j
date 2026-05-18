@@ -622,8 +622,14 @@ void carA() {
     glVertex2f(202, -132);  // M15
     glEnd();
 
-    // headlight (white-gray in daytime and bright yellow in night)
-    glColor3f(0.871, 0.871, 0.871);
+    // headlight (white-gray in daytime, bright yellow at night)
+    if (isNight) {
+        glColor3f(1.0, 0.9, 0.2);  // Bright yellow at night
+    }
+    else {
+        glColor3f(0.871, 0.871, 0.871);  // White-gray daytime
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(94, -108);   // N17
     glVertex2f(96, -118);    // O17
@@ -631,8 +637,13 @@ void carA() {
     glVertex2f(89, -108);   // M17
     glEnd();
 
-    // backlight (red in daytime and bright red in night)
-    glColor3f(0.671, 0, 0);
+    // backlight (dim red in daytime, bright red at night)
+    if (isNight) {
+        glColor3f(1.0, 0.2, 0.2);  // Bright red at night
+    }
+    else {
+        glColor3f(0.671, 0, 0);  // Dim red daytime
+    }
     glBegin(GL_QUADS);
     glVertex2f(201, -108);   // Q17
     glVertex2f(201, -118);    // S17
@@ -699,8 +710,13 @@ void carB() {
     glEnd();
 
 
-    // headlight (white-gray in daytime and bright yellow in night)
-    glColor3f(0.871, 0.871, 0.871);
+    // headlight (white-gray in daytime, bright yellow at night)
+    if (isNight) {
+        glColor3f(1.0, 0.9, 0.2);  // Bright yellow at night
+    }
+    else {
+        glColor3f(0.871, 0.871, 0.871);  // White-gray daytime
+    }
     glBegin(GL_QUADS);
     glVertex2f(-145, -108);   // E17
     glVertex2f(-140, -108);    // F17
@@ -709,7 +725,12 @@ void carB() {
     glEnd();
 
     // backlight (red in daytime and bright red in night)
-    glColor3f(0.671, 0, 0);
+    if (isNight) {
+        glColor3f(1.0, 0.2, 0.2);  // Bright red at night
+    }
+    else {
+        glColor3f(0.671, 0, 0);  // Dim red daytime
+    }
     glBegin(GL_QUADS);
     glVertex2f(-12, -108);   // I17
     glVertex2f(-12, -118);    // L17
