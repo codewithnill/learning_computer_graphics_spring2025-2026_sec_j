@@ -15,6 +15,8 @@ float trainX = 0.0f;  //  controls train position
 float trainSpeed = 1.0f; // for train speed control
 float carAX = 0.0f;   // controls car A position
 float carBX = 0.0f;   //  ontrols car B position
+float carCX = 0.0f;   // controls car C position
+float carDX = 0.0f;   // controls car D position
 float cloudDirection = -1.0f;  // -1 = left, 1 = right
 float sunSize = 22.0f; // original sun size
 
@@ -37,6 +39,8 @@ void fishes();
 void streets();
 void carA();     // first car below street
 void carB();     // second car below street
+void carC();     // third car above street
+void carD();     // fourth car above street
 void boat();
 void grass();
 void railway();
@@ -241,6 +245,8 @@ void display() {
     streets();
     carA();
     carB();
+    carC();
+    //carD();
     boat();
 
 
@@ -605,6 +611,28 @@ void streets() {
 
 
 
+
+// void carD() {
+//     glPushMatrix();
+//     glTranslatef(carDX, 0.0f, 0.0f);
+//     // body
+//     glColor3f(0.345, 0.706, 0.741); // cyan color
+//     glBegin(GL_POLYGON);
+//     // Add your car D vertices here (similar shape to car C but different color)
+//     glVertex2f(-226, -91);
+//     glVertex2f(-224, -62);
+//     glVertex2f(-196, -58);
+//     glVertex2f(-176, -28);
+//     glVertex2f(-144, -29);
+//     glVertex2f(-128, -58);
+//     glVertex2f(-96, -62);
+//     glVertex2f(-93, -91);
+//     glEnd();
+//     glPopMatrix();
+// }
+
+
+
 void carA() {
     glPushMatrix();
     glTranslatef(carAX, 0.0f, 0.0f);
@@ -766,6 +794,26 @@ void carB() {
     glVertex2f(-92, -73);    // B17
     glVertex2f(-61, -73);    // C17
     glVertex2f(-61, -92);   // D17
+    glEnd();
+
+    glPopMatrix();
+}
+
+void carC() {
+    glPushMatrix();
+    glTranslatef(carCX, 0.0f, 0.0f);
+    // body
+    // U17 V17 W17 Z17 A18 B18 C18 D18
+    glColor3f(0.514, 0.024, 0.729); // purple
+    glBegin(GL_POLYGON);
+    glVertex2f(-226, -96);  // U17
+    glVertex2f(-224, -62);   // V17
+    glVertex2f(-196, -58);   // W17
+    glVertex2f(-176, -28);  // Z17
+    glVertex2f(-144, -29);  // A18
+    glVertex2f(-128, -58);  // B18
+    glVertex2f(-96, -62);  // C18
+    glVertex2f(-93, -96);  // D18
     glEnd();
 
     glPopMatrix();
