@@ -95,7 +95,7 @@ void update(int value) {
     }
 
     // Car A movement 
-    carAX -= 1.2;
+    carAX -= 1.8;
 
     // Reset car A when it goes off screen
     if (carAX < -500) {
@@ -103,21 +103,37 @@ void update(int value) {
     }
 
     // Car B movement 
-    carBX -= 1.2;
+    carBX -= 1.8;
 
     // Reset car B when it goes off screen
     if (carBX < -500) {
         carBX = 400;
     }
 
+    // Car C movement 
+    carCX += 1.8;
+
+    // Reset car C when it goes off screen to the right
+    if (carCX > 500) {
+        carCX = -500;
+    }
+
+
+    carDX += 1.8;
+
+    // Reset car D when it goes off screen to the right
+    if (carDX > 500) {
+        carDX = -500;
+    }
 
 
 
-    fishX -= 0.5;  // Move fishes left (slower than boat)
+
+    fishX -= 0.7;
 
     // When fishes go off screen, reset and change color
     if (fishX < -350) {
-        fishX = 230;  // Reset to right side
+        fishX = 380;  // Reset to right side
         fishColorIndex = (fishColorIndex + 1) % 3;  // Cycle through 0,1,2
     }
 
@@ -616,7 +632,7 @@ void streets() {
 
 void carD() {
     glPushMatrix();
-    glTranslatef(carCX, 0.0f, 0.0f);
+    glTranslatef(carDX, 0.0f, 0.0f);
     // body
 
     glColor3f(0.369, 0.329, 1); // purple
