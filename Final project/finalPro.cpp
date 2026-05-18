@@ -243,9 +243,11 @@ void display() {
     water();
     fishes();
     streets();
+    carC();
+    carD();
     carA();
     carB();
-    carC();
+
     //carD();
     boat();
 
@@ -612,25 +614,169 @@ void streets() {
 
 
 
-// void carD() {
-//     glPushMatrix();
-//     glTranslatef(carDX, 0.0f, 0.0f);
-//     // body
-//     glColor3f(0.345, 0.706, 0.741); // cyan color
-//     glBegin(GL_POLYGON);
-//     // Add your car D vertices here (similar shape to car C but different color)
-//     glVertex2f(-226, -91);
-//     glVertex2f(-224, -62);
-//     glVertex2f(-196, -58);
-//     glVertex2f(-176, -28);
-//     glVertex2f(-144, -29);
-//     glVertex2f(-128, -58);
-//     glVertex2f(-96, -62);
-//     glVertex2f(-93, -91);
-//     glEnd();
-//     glPopMatrix();
-// }
+void carD() {
+    glPushMatrix();
+    glTranslatef(carCX, 0.0f, 0.0f);
+    // body
 
+    glColor3f(0.369, 0.329, 1); // purple
+    glBegin(GL_POLYGON);
+    glVertex2f(37, -96);
+    glVertex2f(38, -62);
+    glVertex2f(67, -58);
+    glVertex2f(87, -28);
+    glVertex2f(119, -29);
+    glVertex2f(135, -58);
+    glVertex2f(165, -62);
+    glVertex2f(169, -96);
+    glEnd();
+
+
+    // tyre
+    circle(10, 12, 14, 13, 147, -95); // front
+    circle(10, 12, 14, 13, 60, -95); // back
+
+    // rims
+    circle(160, 162, 165, 7, 147, -95); // front rim
+    circle(160, 162, 165, 7, 60, -95); // rear rim
+
+
+    // door
+    glLineWidth(1);
+    glColor3f(0.29, 0.29, 0.29);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(73, -92);
+    glVertex2f(69, -58);
+    glVertex2f(87, -31);
+    glVertex2f(117, -32);
+    glVertex2f(132, -61);
+    glVertex2f(126, -92);
+    glEnd();
+
+    // door window
+    glColor3f(0.271, 0.271, 0.271);
+    glBegin(GL_QUADS);
+    glVertex2f(72, -60);
+    glVertex2f(88, -35);
+    glVertex2f(116, -35);
+    glVertex2f(128, -60);
+    glEnd();
+
+
+    // headlight (white-gray in daytime, bright yellow at night)
+    if (isNight) {
+        glColor3f(1.0, 0.9, 0.2);  // Bright yellow at night
+    }
+    else {
+        glColor3f(0.871, 0.871, 0.871);  // White-gray daytime
+    }
+
+    glBegin(GL_QUADS);
+    glVertex2f(158, -80);
+    glVertex2f(160, -70);
+    glVertex2f(166, -70);
+    glVertex2f(167, -80);
+    glEnd();
+
+    // backlight (dim red in daytime, bright red at night)
+    if (isNight) {
+        glColor3f(1.0, 0.2, 0.2);  // Bright red at night
+    }
+    else {
+        glColor3f(0.671, 0, 0);  // Dim red daytime
+    }
+    glBegin(GL_QUADS);
+    glVertex2f(38, -68);
+    glVertex2f(44, -68);
+    glVertex2f(45, -78);
+    glVertex2f(38, -78);
+    glEnd();
+
+    glPopMatrix();
+}
+
+
+
+void carC() {
+    glPushMatrix();
+    glTranslatef(carCX, 0.0f, 0.0f);
+    // body
+    // U17 V17 W17 Z17 A18 B18 C18 D18
+    glColor3f(0.631, 0.239, 0.8); // purple
+    glBegin(GL_POLYGON);
+    glVertex2f(-226, -96);  // U17
+    glVertex2f(-224, -62);   // V17
+    glVertex2f(-196, -58);   // W17
+    glVertex2f(-176, -28);  // Z17
+    glVertex2f(-144, -29);  // A18
+    glVertex2f(-128, -58);  // B18
+    glVertex2f(-96, -62);  // C18
+    glVertex2f(-93, -96);  // D18
+    glEnd();
+
+
+    // tyre
+    circle(10, 12, 14, 13, -115, -95); // front
+    circle(10, 12, 14, 13, -205, -95); // back
+
+    // rims
+    circle(160, 162, 165, 7, -115, -95); // front rim
+    circle(160, 162, 165, 7, -205, -95); // rear rim
+
+
+    // door
+    glLineWidth(1);
+    glColor3f(0.29, 0.29, 0.29);
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-189, -92); // J18
+    glVertex2f(-193, -59); // E18
+    glVertex2f(-175, -32); // F18
+    glVertex2f(-145, -32); // G18
+    glVertex2f(-130, -61); // H18
+    glVertex2f(-136, -92); // I18
+    glEnd();
+
+    // door window
+    glColor3f(0.271, 0.271, 0.271);
+    glBegin(GL_QUADS);
+    glVertex2f(-190, -60);   // K18
+    glVertex2f(-174, -36);    // L18
+    glVertex2f(-147, -35);    // M18
+    glVertex2f(-134, -60);   // N18
+    glEnd();
+
+
+    // headlight (white-gray in daytime, bright yellow at night)
+    if (isNight) {
+        glColor3f(1.0, 0.9, 0.2);  // Bright yellow at night
+    }
+    else {
+        glColor3f(0.871, 0.871, 0.871);  // White-gray daytime
+    }
+
+    glBegin(GL_QUADS);
+    glVertex2f(-104, -80);   // Q18
+    glVertex2f(-102, -70);    // P18
+    glVertex2f(-95, -70);    // O18
+    glVertex2f(-94, -80);   // R18
+    glEnd();
+
+    // backlight (dim red in daytime, bright red at night)
+    if (isNight) {
+        glColor3f(1.0, 0.2, 0.2);  // Bright red at night
+    }
+    else {
+        glColor3f(0.671, 0, 0);  // Dim red daytime
+    }
+    glBegin(GL_QUADS);
+    glVertex2f(-224, -70);
+    glVertex2f(-218, -70);
+    glVertex2f(-218, -80);
+    glVertex2f(-225, -80);
+    glEnd();
+
+    glPopMatrix();
+}
 
 
 void carA() {
@@ -799,25 +945,7 @@ void carB() {
     glPopMatrix();
 }
 
-void carC() {
-    glPushMatrix();
-    glTranslatef(carCX, 0.0f, 0.0f);
-    // body
-    // U17 V17 W17 Z17 A18 B18 C18 D18
-    glColor3f(0.514, 0.024, 0.729); // purple
-    glBegin(GL_POLYGON);
-    glVertex2f(-226, -96);  // U17
-    glVertex2f(-224, -62);   // V17
-    glVertex2f(-196, -58);   // W17
-    glVertex2f(-176, -28);  // Z17
-    glVertex2f(-144, -29);  // A18
-    glVertex2f(-128, -58);  // B18
-    glVertex2f(-96, -62);  // C18
-    glVertex2f(-93, -96);  // D18
-    glEnd();
 
-    glPopMatrix();
-}
 
 
 
