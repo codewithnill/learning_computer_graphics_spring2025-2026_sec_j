@@ -1,5 +1,6 @@
 #include <windows.h>
-#include <GL/gl.h> // for MS Windows
+#include <GL/freeglut.h>  // instead of <GL/glut.h>
+//#include <GL/gl.h> // for MS Windows
 #include <GL/glut.h> // GLUT, include glu.h and gl.h
 #include <cmath>
 
@@ -15,7 +16,7 @@ float trainSpeed = 1.0f; // for train speed control
 float carAX = 0.0f;   // controls car A position
 float carBX = 0.0f;   //  ontrols car B position
 float cloudDirection = -1.0f;  // -1 = left, 1 = right
-float trainSpeed = 1.0f; // train speed toggle
+float sunSize = 22.0f; // original sun size
 
 
 
@@ -45,6 +46,7 @@ void keyboard(unsigned char key, int x, int y);
 void update(int value);
 void display();
 void setFishColor(int colorIndex);
+void mouseWheel(int button, int direction, int x, int y);
 
 
 
@@ -53,7 +55,20 @@ void setFishColor(int colorIndex);
 
 
 
-
+void mouseWheel(int button, int direction, int x, int y) {
+    // direction: 1 = wheel up, -1 = wheel down
+    if (direction > 0) {
+        // Wheel up - increase sun/moon size
+        sunSize += 2.0f;
+        if (sunSize > 30) sunSize = 30;  // Max limit
+    }
+    else {
+        // Wheel down - decrease sun/moon size
+        sunSize -= 2.0f;
+        if (sunSize < 22) sunSize = 22;  // Min limit
+    }
+    glutPostRedisplay();
+}
 
 
 void update(int value) {
@@ -128,6 +143,8 @@ void update(int value) {
     glutPostRedisplay();  // Redraw the scene
     glutTimerFunc(8, update, 0);  // Call again 
 }
+
+
 
 
 
@@ -255,8 +272,8 @@ void sky() {
 }
 
 
-
-void sun() { // -> changes to moon when N or n is pressed to bring night mode
+// sun function before adding mousewheel trigger
+/*void sun() { // -> changes to moon when N or n is pressed to bring night mode
 
     //glPushMatrix();
     //glTranslatef(x, y, 0);
@@ -273,6 +290,15 @@ void sun() { // -> changes to moon when N or n is pressed to bring night mode
     else {
         // Sun (orange-yellow)
         circle(255, 220, 140, 22, -200, 210);  // Main sun
+    }
+} */
+
+void sun() {
+    if (isNight) {
+        circle(206, 220, 255, sunSize, -200, 212);  // uses sunSize variable
+    }
+    else {
+        circle(255, 220, 140, sunSize, -200, 212);  // uses sunSize variable
     }
 }
 
@@ -1010,6 +1036,7 @@ int main(int argc, char** argv) {
 
     glutTimerFunc(16, update, 0);
     glutKeyboardFunc(keyboard);
+    glutMouseWheelFunc(mouseWheel);
     glutMainLoop(); // Enter the event-processing loop (keeps the program alive)
     return 0;
 }
