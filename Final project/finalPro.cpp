@@ -622,6 +622,24 @@ void carA() {
     glVertex2f(202, -132);  // M15
     glEnd();
 
+    // headlight (white-gray in daytime and bright yellow in night)
+    glColor3f(0.871, 0.871, 0.871);
+    glBegin(GL_QUADS);
+    glVertex2f(94, -108);   // N17
+    glVertex2f(96, -118);    // O17
+    glVertex2f(88, -118);    // P17
+    glVertex2f(89, -108);   // M17
+    glEnd();
+
+    // backlight (red in daytime and bright red in night)
+    glColor3f(0.671, 0, 0);
+    glBegin(GL_QUADS);
+    glVertex2f(201, -108);   // Q17
+    glVertex2f(201, -118);    // S17
+    glVertex2f(193, -118);    // T17
+    glVertex2f(195, -108);   // R17
+    glEnd();
+
     // tyre
     circle(10, 12, 14, 13, 105, -131); // front
     circle(10, 12, 14, 13, 180, -131); // back
@@ -679,6 +697,26 @@ void carB() {
     glVertex2f(-12, -96);  // M16
     glVertex2f(-12, -133);  // N16
     glEnd();
+
+
+    // headlight (white-gray in daytime and bright yellow in night)
+    glColor3f(0.871, 0.871, 0.871);
+    glBegin(GL_QUADS);
+    glVertex2f(-145, -108);   // E17
+    glVertex2f(-140, -108);    // F17
+    glVertex2f(-137, -118);    // G17
+    glVertex2f(-146, -118);   // H17
+    glEnd();
+
+    // backlight (red in daytime and bright red in night)
+    glColor3f(0.671, 0, 0);
+    glBegin(GL_QUADS);
+    glVertex2f(-12, -108);   // I17
+    glVertex2f(-12, -118);    // L17
+    glVertex2f(-20, -118);    // K17
+    glVertex2f(-19, -108);   // J17
+    glEnd();
+
 
     // tyre
     circle(10, 12, 14, 13, -125, -131); // front
