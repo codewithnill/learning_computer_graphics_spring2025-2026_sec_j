@@ -3,6 +3,8 @@
 //#include <GL/gl.h> // for MS Windows
 #include <GL/glut.h> // GLUT, include glu.h and gl.h
 #include <cmath>
+#include <iostream>
+using namespace std;
 
 
 
@@ -19,8 +21,14 @@ float carCX = 0.0f;   // controls car C position
 float carDX = 0.0f;   // controls car D position
 float cloudDirection = -1.0f;  // -1 = left, 1 = right
 float sunSize = 22.0f; // original sun size
+float lightAngle = 0.0f; // for rotation
+float lightDirection = 1.0f;  // 1 = moving up, -1 = moving down
 
 
+
+int scene = 0;      // 0 = Town, 1 = Beach
+int vanishCounter = 0;  // Count how many cars have vanished
+float carCY_Offset = 0.0f;
 
 
 bool isNight = false;
@@ -51,6 +59,11 @@ void update(int value);
 void display();
 void setFishColor(int colorIndex);
 void mouseWheel(int button, int direction, int x, int y);
+void beach();
+void sea();
+void lighthouse();
+void light();
+void seaboat();
 
 
 
@@ -77,66 +90,85 @@ void mouseWheel(int button, int direction, int x, int y) {
 
 void update(int value) {
 
+    // Only update town vehicles if still in town scene
+    if (scene == 0) {
+        boatX -= 0.7;  // Move left 
 
+        // Reset position when boat goes too far left
+        if (boatX < -250) {
+            boatX = 250 + 200;  // Reset to right side
+        }
 
-    boatX -= 0.7;  // Move left 
+        //  Train movement
+        trainX -= trainSpeed;
 
-    // Reset position when boat goes too far left
-    if (boatX < -250) {
-        boatX = 250 + 200;  // Reset to right side
+        // Reset train when it goes off screen
+        if (trainX < -400) {
+            trainX = 550;
+        }
+
+        // Car A movement 
+        carAX -= 1.8;
+
+        // Reset car A when it goes off screen
+        if (carAX < -500) {
+            carAX = 400;
+        }
+
+        // Car B movement 
+        carBX -= 1.8;
+
+        // Reset car B when it goes off screen
+        if (carBX < -500) {
+            carBX = 400;
+        }
+
+        // Car C movement 
+        carCX += 1.8;
+
+        // Reset car C when it goes off screen to the right
+        if (carCX > 500) {
+            carCX = -500;
+            vanishCounter++;  // Track car C vanish
+        }
+
+        carDX += 1.8;
+
+        // Reset car D when it goes off screen to the right
+        if (carDX > 500) {
+            carDX = -500;
+            vanishCounter++;  // Track car D vanish
+        }
+
+        // When both cars have vanished, switch to beach scene
+        if (vanishCounter >= 4 && scene == 0) {
+            scene = 1;
+            // Reset car positions to come from left in beach scene
+            carCX = -400;
+            carDX = -400;
+        }
+
+        fishX -= 0.7;
+
+        // When fishes go off screen, reset and change color
+        if (fishX < -350) {
+            fishX = 380;  // Reset to right side
+            fishColorIndex = (fishColorIndex + 1) % 3;  // Cycle through 0,1,2
+        }
     }
+    else {
+        // Beach scene - only cars C and D move
+        carCX += 1.8;
+        carDX += 1.8;
 
-    //  Train movement
-    trainX -= trainSpeed;
+        if (carCX > -15) {
+            carCX = -15;
+        }
 
-    // Reset train when it goes off screen
-    if (trainX < -400) {
-        trainX = 550;
+        if (carDX > -200) {
+            carDX = -200;
+        }
     }
-
-    // Car A movement 
-    carAX -= 1.8;
-
-    // Reset car A when it goes off screen
-    if (carAX < -500) {
-        carAX = 400;
-    }
-
-    // Car B movement 
-    carBX -= 1.8;
-
-    // Reset car B when it goes off screen
-    if (carBX < -500) {
-        carBX = 400;
-    }
-
-    // Car C movement 
-    carCX += 1.8;
-
-    // Reset car C when it goes off screen to the right
-    if (carCX > 500) {
-        carCX = -500;
-    }
-
-
-    carDX += 1.8;
-
-    // Reset car D when it goes off screen to the right
-    if (carDX > 500) {
-        carDX = -500;
-    }
-
-
-
-
-    fishX -= 0.7;
-
-    // When fishes go off screen, reset and change color
-    if (fishX < -350) {
-        fishX = 380;  // Reset to right side
-        fishColorIndex = (fishColorIndex + 1) % 3;  // Cycle through 0,1,2
-    }
-
 
     // Cloud movement
     //cloudX -= 0.1;  // Move left
@@ -157,10 +189,20 @@ void update(int value) {
     }
 
 
+    // Light beam oscillation (up and down)
+    lightAngle += lightDirection * 0.1f;  // Change speed by adjusting 0.1f
+
+    if (lightAngle > 2.0f) {
+        lightAngle = 2.0f;
+        lightDirection = -1.0f;
+    }
+    else if (lightAngle < -2.0f) {
+        lightAngle = -2.0f;
+        lightDirection = 1.0f;
+    }
 
 
-
-    glutPostRedisplay();  // Redraw the scene
+    glutPostRedisplay();  // Redraw the scene  
     glutTimerFunc(8, update, 0);  // Call again 
 }
 
@@ -228,6 +270,8 @@ void circle(float r, float g, float b, float radius, float xc, float yc)
 
 
 
+
+
 void display() {
     glClearColor(1, 1, 1, 1); // set background color to white and opaque
     glClear(GL_COLOR_BUFFER_BIT); // Clear the color buffer (background) (fills the screen with this color)
@@ -243,38 +287,114 @@ void display() {
     glMatrixMode(GL_MODELVIEW);   // Switch back to modelview matrix
     glLoadIdentity();             // Reset modelview matrix
 
-
-
-
-
-
-
+    // Always draw sky, sun, clouds (same for both scenes)
     sky();
     sun();
     cloudset();
-    buildings();
-    grass();
-    railway();
-    train();
-    water();
-    fishes();
-    streets();
-    carC();
-    carD();
-    carA();
-    carB();
 
-    //carD();
-    boat();
+    if (scene == 0) {
+        // Town scene
+        buildings();
+        grass();
+        railway();
+        train();
+        water();
+        fishes();
+        streets();
+        carC();
+        carD();
+        carA();
+        carB();
+        boat();
 
+    }
+    else {
+        // Beach scene
+        beach();  // Yellow sand
+        sea();    // Blue water
+        lighthouse();
+        carC();   // Cars come from left and stop at water edge
+        carD();
+        light();
+        seaboat();
+    }
 
-
-
-
-
-    //glFlush(); // Render now (forces all OpenGL commands to execute immediately)
     glutSwapBuffers();
 }
+
+
+
+void lighthouse() {
+    if (isNight) {
+        glColor3f(0.522, 0.522, 0.522);
+    }
+    else {
+        glColor3f(0.651, 0.651, 0.651);
+    }
+
+    glBegin(GL_QUADS);
+    glVertex2f(-138, -20);
+    glVertex2f(-128, 76);
+    glVertex2f(-116, 76);
+    glVertex2f(-106, -20);
+    glEnd();
+
+
+    // roof
+    if (isNight) {
+        glColor3f(0.161, 0.161, 0.161);
+    }
+    else {
+        glColor3f(0.278, 0.278, 0.278);
+    }
+    glBegin(GL_QUADS);
+    glVertex2f(-132, 76);
+    glVertex2f(-132, 92);
+    glVertex2f(-112, 92);
+    glVertex2f(-112, 76);
+    glEnd();
+
+
+
+
+}
+
+void light() {
+    if (!isNight) return;
+
+    glPushMatrix();
+    // glLoadIdentity();
+    glTranslatef(-112, 84, 0);  // Move to light source center
+    glRotatef(lightAngle, 0, 0, 1);  // Rotate up and down
+    glTranslatef(0, 0, 0);
+
+    glColor3f(1.0, 0.98, 0.7);
+    glBegin(GL_QUADS);
+    glVertex2f(0, -4);
+    glVertex2f(0, 2);
+    glVertex2f(172, 47);
+    glVertex2f(172, -44);
+    glEnd();
+
+    glPopMatrix();
+}
+
+void seaboat() {
+    // glColor3f(1, 0.576, 0.125);
+    if (isNight) {
+        glColor3f(0.78, 0.447, 0.09);
+    }
+    else {
+        glColor3f(1, 0.576, 0.125);
+    }
+    glBegin(GL_QUADS);
+    glVertex2f(20, -20);
+    glVertex2f(0, 0);
+    glVertex2f(80, 0);
+    glVertex2f(75, -20);
+    glEnd();
+}
+
 
 
 
@@ -329,7 +449,14 @@ void sun() {
 
 
 void grass() {
-    glColor3f(0, 0.412, 0.008);  // Green grass
+    // glColor3f(0, 0.412, 0.008);  // Green grass
+
+    if (isNight) {
+        glColor3f(0.0, 0.20, 0.004);  // Dark green at night
+    }
+    else {
+        glColor3f(0, 0.412, 0.008);  // Green grass
+    }
     glBegin(GL_QUADS);
     glVertex2f(-250, -20);  // Z1: Top-left corner of separator
     glVertex2f(250, -20);   // A2: Top-right corner of separator
@@ -355,7 +482,16 @@ void railway() {
 
 
     // top separator R1 V1 W1 S1
-    glColor3f(0.5, 0.5, 0.5);  // Gray color for separator
+    // glColor3f(0.5, 0.5, 0.5);  // Gray color for separator
+
+
+    if (isNight) {
+        glColor3f(0.25, 0.25, 0.25);  // Darker at night
+    }
+    else {
+        glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-250, -42);   // Top-left corner
     glVertex2f(250, -42);    // Top-right corner
@@ -595,7 +731,15 @@ void streets() {
 
     // top separator N1 A13 B13 O1
 
-    glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
+    // glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
+
+    if (isNight) {
+        glColor3f(0.25, 0.25, 0.25);  // Darker at night
+    }
+    else {
+        glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-250, -75);  // Top-left corner of separator
     glVertex2f(250, -75);   // Top-right corner of separator
@@ -605,7 +749,15 @@ void streets() {
 
 
 
-    glColor3f(0.169, 0.169, 0.169);  // Gray color
+    //glColor3f(0.169, 0.169, 0.169);  // Gray color
+
+    if (isNight) {
+        glColor3f(0.08, 0.08, 0.08);  // Darker road at night
+    }
+    else {
+        glColor3f(0.169, 0.169, 0.169);  // Gray color
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-250, -80); // Top-left corner
     glVertex2f(250, -80); // Top-right corner
@@ -635,7 +787,16 @@ void carD() {
     glTranslatef(carDX, 0.0f, 0.0f);
     // body
 
-    glColor3f(0.369, 0.329, 1); // purple
+    // glColor3f(0.467, 0.749, 0.408); 
+
+
+    if (isNight) {
+        glColor3f(0.408, 0.639, 0.361);
+    }
+    else {
+        glColor3f(0.467, 0.749, 0.408);
+    }
+
     glBegin(GL_POLYGON);
     glVertex2f(37, -96);
     glVertex2f(38, -62);
@@ -659,7 +820,14 @@ void carD() {
 
     // door
     glLineWidth(1);
-    glColor3f(0.29, 0.29, 0.29);
+    // glColor3f(0.29, 0.29, 0.29);
+
+    if (isNight) {
+        glColor3f(0.14, 0.14, 0.14);
+    }
+    else {
+        glColor3f(0.29, 0.29, 0.29);
+    }
     glBegin(GL_LINE_LOOP);
     glVertex2f(73, -92);
     glVertex2f(69, -58);
@@ -670,7 +838,15 @@ void carD() {
     glEnd();
 
     // door window
-    glColor3f(0.271, 0.271, 0.271);
+    // glColor3f(0.271, 0.271, 0.271);
+
+    if (isNight) {
+        glColor3f(0.13, 0.13, 0.13);
+    }
+    else {
+        glColor3f(0.271, 0.271, 0.271);
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(72, -60);
     glVertex2f(88, -35);
@@ -714,11 +890,31 @@ void carD() {
 
 
 void carC() {
-    glPushMatrix();
-    glTranslatef(carCX, 0.0f, 0.0f);
+    // glPushMatrix();
+    // glTranslatef(carCX, 0.0f, 0.0f);
+
+
+    if (scene == 1) {
+        glPushMatrix();
+        glTranslatef(carCX, -70.0f, 0.0f);  // Lower in beach scene
+    }
+    else {
+        glPushMatrix();
+        glTranslatef(carCX, 0.0f, 0.0f);   // Original position in town
+    }
+
+
     // body
     // U17 V17 W17 Z17 A18 B18 C18 D18
-    glColor3f(0.631, 0.239, 0.8); // purple
+    //glColor3f(0.631, 0.239, 0.8); // purple
+
+    if (isNight) {
+        glColor3f(0.224, 0.184, 0.788);  // Dark purple at night
+    }
+    else {
+        glColor3f(0.369, 0.329, 1);  // purple
+    }
+
     glBegin(GL_POLYGON);
     glVertex2f(-226, -96);  // U17
     glVertex2f(-224, -62);   // V17
@@ -742,7 +938,16 @@ void carC() {
 
     // door
     glLineWidth(1);
-    glColor3f(0.29, 0.29, 0.29);
+    // glColor3f(0.29, 0.29, 0.29);
+
+    if (isNight) {
+        glColor3f(0.14, 0.14, 0.14);
+    }
+    else {
+        glColor3f(0.29, 0.29, 0.29);
+    }
+
+
     glBegin(GL_LINE_LOOP);
     glVertex2f(-189, -92); // J18
     glVertex2f(-193, -59); // E18
@@ -753,7 +958,15 @@ void carC() {
     glEnd();
 
     // door window
-    glColor3f(0.271, 0.271, 0.271);
+    // glColor3f(0.271, 0.271, 0.271);
+
+    if (isNight) {
+        glColor3f(0.13, 0.13, 0.13);
+    }
+    else {
+        glColor3f(0.271, 0.271, 0.271);
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-190, -60);   // K18
     glVertex2f(-174, -36);    // L18
@@ -800,7 +1013,15 @@ void carA() {
     glTranslatef(carAX, 0.0f, 0.0f);
     // body
     // E15 F15 G15 I15 J15 K15 L15 M15
-    glColor3f(1, 0.486, 0); // orange
+    //glColor3f(1, 0.486, 0); // orange
+
+    if (isNight) {
+        glColor3f(0.871, 0.42, 0);  // Dark orange at night
+    }
+    else {
+        glColor3f(1, 0.486, 0);  // orange
+    }
+
     glBegin(GL_POLYGON);
     glVertex2f(88, -133);  // E15
     glVertex2f(89, -103);   // F15
@@ -851,7 +1072,12 @@ void carA() {
 
     // door
     glLineWidth(1);
-    glColor3f(0.29, 0.29, 0.29);
+    if (isNight) {
+        glColor3f(0.14, 0.14, 0.14);  // Darker at night
+    }
+    else {
+        glColor3f(0.29, 0.29, 0.29);
+    }
     glBegin(GL_LINE_LOOP);
     glVertex2f(120, -129); // V15
     glVertex2f(119, -99); // O15
@@ -862,7 +1088,12 @@ void carA() {
     glEnd();
 
     // door window
-    glColor3f(0.271, 0.271, 0.271);
+    if (isNight) {
+        glColor3f(0.13, 0.13, 0.13);  // Darker at night
+    }
+    else {
+        glColor3f(0.271, 0.271, 0.271);
+    }
     glBegin(GL_QUADS);
     glVertex2f(123, -98);   // Z15
     glVertex2f(136, -78);    // A16
@@ -871,7 +1102,12 @@ void carA() {
     glEnd();
 
     // back
-    glColor3f(1, 0.486, 0);
+    if (isNight) {
+        glColor3f(0.871, 0.42, 0);  // Dark orange at night
+    }
+    else {
+        glColor3f(1, 0.486, 0);  // orange
+    }
     glBegin(GL_QUADS);
     glVertex2f(189, -99);   // D16
     glVertex2f(193, -85);    // E16
@@ -887,7 +1123,15 @@ void carB() {
     glTranslatef(carBX, 0.0f, 0.0f);
     // body
     // H16 G16 I16 J16 K16 L16 M16 N16
-    glColor3f(0.345, 0.706, 0.741); // orange
+    //glColor3f(0.345, 0.706, 0.741); // orange
+
+    if (isNight) {
+        glColor3f(0.22, 0.576, 0.612);  // Dark teal at night
+    }
+    else {
+        glColor3f(0.345, 0.706, 0.741);  // teal
+    }
+
     glBegin(GL_POLYGON);
     glVertex2f(-147, -133);  // H16
     glVertex2f(-145, -100);   // G16
@@ -939,7 +1183,15 @@ void carB() {
 
     // door
     glLineWidth(1);
-    glColor3f(0.29, 0.29, 0.29);
+    // glColor3f(0.29, 0.29, 0.29);
+
+    if (isNight) {
+        glColor3f(0.14, 0.14, 0.14);
+    }
+    else {
+        glColor3f(0.29, 0.29, 0.29);
+    }
+
     glBegin(GL_LINE_LOOP);
     glVertex2f(-107, -128); // U16
     glVertex2f(-109, -92); // P16
@@ -950,7 +1202,15 @@ void carB() {
     glEnd();
 
     // door window
-    glColor3f(0.271, 0.271, 0.271);
+    // glColor3f(0.271, 0.271, 0.271);
+
+    if (isNight) {
+        glColor3f(0.13, 0.13, 0.13);
+    }
+    else {
+        glColor3f(0.271, 0.271, 0.271);
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-105, -92);   // A17
     glVertex2f(-92, -73);    // B17
@@ -967,7 +1227,15 @@ void carB() {
 
 void water() {
     // adding a separator between street bottom and water top
-    glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
+    // glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
+
+    if (isNight) {
+        glColor3f(0.25, 0.25, 0.25);  // Darker at night
+    }
+    else {
+        glColor3f(0.5, 0.5, 0.5);  // Gray color for the separator
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-250, -150);  // Top-left corner of separator
     glVertex2f(250, -150);   // Top-right corner of separator
@@ -976,7 +1244,20 @@ void water() {
     glEnd();
 
 
-    glColor3f(0.106, 0.224, 0.749);  // Bright blue color
+    // glColor3f(0.106, 0.224, 0.749);  // Bright blue color
+    // glBegin(GL_QUADS);       // rectangle (quadrilateral)
+    // glVertex2f(250, -155);   // Top-right corner
+    // glVertex2f(-250, -155);  // Top-left corner
+    // glVertex2f(-250, -250);  // Bottom-left corner (lowest possible)
+    // glVertex2f(250, -250);   // Bottom-right corner (lowest possible)
+    // glEnd();
+
+    if (isNight) {
+        glColor3f(0.04, 0.09, 0.35);  // Dark blue at night
+    }
+    else {
+        glColor3f(0.106, 0.224, 0.749);  // Bright blue color
+    }
     glBegin(GL_QUADS);       // rectangle (quadrilateral)
     glVertex2f(250, -155);   // Top-right corner
     glVertex2f(-250, -155);  // Top-left corner
@@ -1270,12 +1551,55 @@ void fishes() {
 }
 
 
+void beach() {
+    // Yellow sand/beach (left side) - only from Y = -20 down to -250
+    //glColor3f(0.85, 0.8, 0.6);  // Sand color
+
+    if (isNight) {
+        glColor3f(0.42, 0.40, 0.30);  // Dark sand at night
+    }
+    else {
+        glColor3f(0.85, 0.8, 0.6);  // Sand color
+    }
+
+    glBegin(GL_QUADS);
+    glVertex2f(-250, -20);    // Bottom left of sky area (top of beach)
+    glVertex2f(0, -20);       // Bottom right of sky area (top of beach)
+    glVertex2f(0, -250);      // Bottom right
+    glVertex2f(-250, -250);   // Bottom left
+    glEnd();
+}
+
+void sea() {
+
+    //glColor3f(0.106, 0.224, 0.749);  // Bright blue color
+
+    if (isNight) {
+        glColor3f(0.04, 0.09, 0.35);  // Dark blue at night
+    }
+    else {
+        glColor3f(0.106, 0.224, 0.749);  // Bright blue color
+    }
+
+    glBegin(GL_QUADS);
+    glVertex2f(0, -20);       // Bottom left of sky area (top of sea)
+    glVertex2f(250, -20);     // Bottom right of sky area (top of sea)
+    glVertex2f(250, -250);    // Bottom right
+    glVertex2f(0, -250);      // Bottom left
+    glEnd();
+}
+
+
 
 
 
 
 /* Main function: GLUT runs as a console application starting at main() */
 int main(int argc, char** argv) {
+
+    AllocConsole();
+    freopen("CONOUT$", "w", stdout);
+
     //argc = argument count (number of command-line arguments)
     //argv = argument vector (array of command-line argument strings)
     glutInit(&argc, argv);
@@ -1283,11 +1607,29 @@ int main(int argc, char** argv) {
     glutInitWindowSize(1200, 600); // set the window's initial width & height
     glutInitWindowPosition(70, 70);  // set the window's initial position according to the monitor
     glutCreateWindow("Scene"); // Create a window with the given title
+
+
+
+
+    cout << "\nPress C or c to change direction of clouds" << endl;
+    cout << "Press N or n to switch to night mode" << endl;
+    cout << "Press D or d to switch to day mode" << endl;
+    cout << "Press S or s to change train speed" << endl;
+    cout << "Mouse wheel up to increase sun/moon radius" << endl;
+    cout << "Mouse wheel down to decrease sun/moon radius" << endl;
+
+
+
+
     glutDisplayFunc(display); // Register display callback handler for window re-paint
 
     glutTimerFunc(16, update, 0);
     glutKeyboardFunc(keyboard);
     glutMouseWheelFunc(mouseWheel);
+
+
+
+
     glutMainLoop(); // Enter the event-processing loop (keeps the program alive)
     return 0;
 }
@@ -1324,7 +1666,15 @@ void buildings() {
 
     // building 1
     // E4 N2 F2 G2
-    glColor3f(0.86, 0.08, 0.24); // Crimson Red
+    //glColor3f(0.86, 0.08, 0.24); // Crimson Red
+
+    if (isNight) {
+        glColor3f(0.569, 0.051, 0.153);  // Dark crimson at night
+    }
+    else {
+        glColor3f(0.86, 0.08, 0.24);  // Crimson Red
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-240, -20);  // E4: Bottom left
     glVertex2f(-240, 100); // N2: Top left
@@ -1333,7 +1683,15 @@ void buildings() {
     glEnd();
 
     // top W2 Z2 B3 A3
-    glColor3f(0.55, 0.00, 0.00); // Dark Red
+    // glColor3f(0.55, 0.00, 0.00); // Dark Red
+
+    if (isNight) {
+        glColor3f(0.27, 0.00, 0.00);  // Darker red at night
+    }
+    else {
+        glColor3f(0.55, 0.00, 0.00);  // Dark Red
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-244, 100);  // W2: Bottom left
     glVertex2f(-244, 106); // Z2: Top left
@@ -1344,7 +1702,15 @@ void buildings() {
 
     //door
     // Q2 D3 N3 P2
-    glColor3f(0.55, 0.00, 0.00); // Pine/Natural Wood
+    // glColor3f(0.55, 0.00, 0.00); // Pine/Natural Wood
+
+    if (isNight) {
+        glColor3f(0.27, 0.00, 0.00);  // Darker at night
+    }
+    else {
+        glColor3f(0.55, 0.00, 0.00);  // Pine/Natural Wood
+    }
+
     glBegin(GL_QUADS);     // 
     glVertex2f(-234, -20);  // Q2: Bottom left
     glVertex2f(-234, 15); // O2: Top left
@@ -1410,7 +1776,15 @@ void buildings() {
 
     // building 2
     // Z4 A5 B5 E5
-    glColor3f(0.18, 0.31, 0.65); // Sapphire
+    // glColor3f(0.18, 0.31, 0.65); // Sapphire
+
+    if (isNight) {
+        glColor3f(0.106, 0.188, 0.412);  // Dark sapphire at night
+    }
+    else {
+        glColor3f(0.18, 0.31, 0.65);  // Sapphire
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-151, -20);  // Z4: Bottom left
     glVertex2f(-151, 120); // A5: Top left
@@ -1419,7 +1793,15 @@ void buildings() {
     glEnd();
 
     // top P5 Q5 W5 V5
-    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    // glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+
+    if (isNight) {
+        glColor3f(0.00, 0.10, 0.20);  // Darker at night
+    }
+    else {
+        glColor3f(0.00, 0.20, 0.40);  // Prussian Blue
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(-155, 120);  // P5: Bottom left
     glVertex2f(-155, 127); // Q5: Top left
@@ -1432,7 +1814,15 @@ void buildings() {
     // triangles
 
     // Z5 Q6 A6
-    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    // glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+
+    if (isNight) {
+        glColor3f(0.00, 0.10, 0.20);  // Darker at night
+    }
+    else {
+        glColor3f(0.00, 0.20, 0.40);  // Prussian Blue
+    }
+
     glBegin(GL_TRIANGLES);
     glVertex2f(-151, 127);  // Z5: Bottom left
     glVertex2f(-131, 179); // Q6: Top
@@ -1441,7 +1831,15 @@ void buildings() {
 
 
     // A6 V6 B6
-    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    // glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+
+    if (isNight) {
+        glColor3f(0.00, 0.10, 0.20);  // Darker at night
+    }
+    else {
+        glColor3f(0.00, 0.20, 0.40);  // Prussian Blue
+    }
+
     glBegin(GL_TRIANGLES);
     glVertex2f(-111, 127);  // A6: Bottom left
     glVertex2f(-91, 179); // V6: Top
@@ -1449,7 +1847,15 @@ void buildings() {
     glEnd();
 
     // B6 W6 E6
-    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    // glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+
+    if (isNight) {
+        glColor3f(0.00, 0.10, 0.20);  // Darker at night
+    }
+    else {
+        glColor3f(0.00, 0.20, 0.40);  // Prussian Blue
+    }
+
     glBegin(GL_TRIANGLES);
     glVertex2f(-71, 127);  // B6: Bottom left
     glVertex2f(-51, 179); // W6: Top
@@ -1457,7 +1863,15 @@ void buildings() {
     glEnd();
 
     // E6 Z6 P6
-    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    // glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+
+    if (isNight) {
+        glColor3f(0.00, 0.10, 0.20);  // Darker at night
+    }
+    else {
+        glColor3f(0.00, 0.20, 0.40);  // Prussian Blue
+    }
+
     glBegin(GL_TRIANGLES);
     glVertex2f(-30, 127);  // E6: Bottom left
     glVertex2f(-11, 180); // Z6: Top
@@ -1468,7 +1882,16 @@ void buildings() {
 
     //door
     // I8 J8 K8 L8
-    glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+    // glColor3f(0.00, 0.20, 0.40); // Prussian Blue
+
+
+    if (isNight) {
+        glColor3f(0.00, 0.10, 0.20);  // Darker at night
+    }
+    else {
+        glColor3f(0.00, 0.20, 0.40);  // Prussian Blue
+    }
+
     glBegin(GL_QUADS);     // 
     glVertex2f(-145, -20);  // I8: Bottom left
     glVertex2f(-145, 15); // J8: Top left
@@ -1501,7 +1924,15 @@ void buildings() {
 
     // garage door
     // V9 B9 D9 C9
-    glColor3f(0.74, 0.76, 0.80); // darker lake water
+    // glColor3f(0.74, 0.76, 0.80); // darker lake water
+
+
+    if (isNight) {
+        glColor3f(0.37, 0.38, 0.40);  // Darker at night
+    }
+    else {
+        glColor3f(0.74, 0.76, 0.80);  // darker lake water
+    }
     glBegin(GL_QUADS);
     glVertex2f(-70, -20);  // A9: Bottom left
     glVertex2f(-70, 15); // B9: Top left
@@ -1564,7 +1995,16 @@ void buildings() {
 
     // building 3
     // A7 B7 C7 D7
-    glColor3f(0.93, 0.57, 0.13); // Carrot Orange
+    // glColor3f(0.93, 0.57, 0.13); // Carrot Orange
+
+
+    if (isNight) {
+        glColor3f(0.788, 0.482, 0.106);
+    }
+    else {
+        glColor3f(0.93, 0.57, 0.13);
+    }
+
     glBegin(GL_QUADS);
     glVertex2f(20, -20);  // A7: Bottom left
     glVertex2f(20, 80); // B7: Top left
@@ -1573,7 +2013,15 @@ void buildings() {
     glEnd();
 
     // top I7 J7 K7 L7
-    glColor3f(0.80, 0.40, 0.15); // Burnt Orange
+    // glColor3f(0.80, 0.40, 0.15); // Burnt Orange
+
+
+    if (isNight) {
+        glColor3f(0.659, 0.337, 0.122);  // Darker at night
+    }
+    else {
+        glColor3f(0.80, 0.40, 0.15);  // Burnt Orange
+    }
     glBegin(GL_QUADS);
     glVertex2f(16, 80);  // I7: Bottom left
     glVertex2f(16, 86); // J7: Top left
@@ -1582,7 +2030,16 @@ void buildings() {
     glEnd();
 
     // door E7 G7 H7 F7
-    glColor3f(0.80, 0.40, 0.15); // Burnt Orange
+    // glColor3f(0.80, 0.40, 0.15); // Burnt Orange
+
+    if (isNight) {
+        glColor3f(0.659, 0.337, 0.122);  // Darker at night
+    }
+    else {
+        glColor3f(0.80, 0.40, 0.15);  // Burnt Orange
+    }
+
+
     glBegin(GL_QUADS);
     glVertex2f(26, -20);  // E7: Bottom left
     glVertex2f(26, 15); // G7: Top left
@@ -1612,7 +2069,14 @@ void buildings() {
 
     // building 4
     // Ground M7 N7 O7 P7
-    glColor3f(0.60, 0.20, 0.80); // Amethyst
+    // glColor3f(0.60, 0.20, 0.80); // Amethyst
+
+    if (isNight) {
+        glColor3f(0.396, 0.133, 0.529);  // Dark amethyst at night
+    }
+    else {
+        glColor3f(0.60, 0.20, 0.80);  // Amethyst
+    }
     glBegin(GL_QUADS);
     glVertex2f(90, -20);  // M7: Bottom left
     glVertex2f(90, 20); // N7: Top left
@@ -1621,7 +2085,15 @@ void buildings() {
     glEnd();
 
     // second floor W7 Z7 H8 G8
-    glColor3f(0.60, 0.20, 0.80); // Amethyst
+    // glColor3f(0.60, 0.20, 0.80); // Amethyst
+
+
+    if (isNight) {
+        glColor3f(0.396, 0.133, 0.529);  // Dark amethyst at night
+    }
+    else {
+        glColor3f(0.60, 0.20, 0.80);  // Amethyst
+    }
     glBegin(GL_QUADS);
     glVertex2f(100, 20);  // W7: Bottom left
     glVertex2f(100, 54); // Z7: Top left
@@ -1630,7 +2102,13 @@ void buildings() {
     glEnd();
 
     // top Q7 R7 V7 S7
-    glColor3f(0.30, 0.00, 0.50); // Dark Purple
+    // glColor3f(0.30, 0.00, 0.50); // Dark Purple
+    if (isNight) {
+        glColor3f(0.15, 0.00, 0.25);  // Darker at night
+    }
+    else {
+        glColor3f(0.30, 0.00, 0.50);  // Dark Purple
+    }
     glBegin(GL_QUADS);
     glVertex2f(96, 54);  // I7: Bottom left
     glVertex2f(96, 60); // J7: Top left
@@ -1641,7 +2119,14 @@ void buildings() {
 
     // garage door 1
     // G12 H12 K12 M12
-    glColor3f(0.74, 0.76, 0.80); // darker lake water
+    // glColor3f(0.74, 0.76, 0.80); // darker lake water
+
+    if (isNight) {
+        glColor3f(0.37, 0.38, 0.40);  // Darker at night
+    }
+    else {
+        glColor3f(0.74, 0.76, 0.80);  // darker lake water
+    }
     glBegin(GL_QUADS);
     glVertex2f(100, -20);  // G12: Bottom left
     glVertex2f(100, 15); // H12: Top left
@@ -1663,7 +2148,13 @@ void buildings() {
 
     // garage door 2
     // N12 L12 J12 I12
-    glColor3f(0.74, 0.76, 0.80); // darker lake water
+    // glColor3f(0.74, 0.76, 0.80); // darker lake water
+    if (isNight) {
+        glColor3f(0.37, 0.38, 0.40);  // Darker at night
+    }
+    else {
+        glColor3f(0.74, 0.76, 0.80);  // darker lake water
+    }
     glBegin(GL_QUADS);
     glVertex2f(170, -20);  // N12: Bottom left
     glVertex2f(170, 15); // L12: Top left
